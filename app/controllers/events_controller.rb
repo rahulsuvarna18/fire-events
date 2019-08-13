@@ -22,6 +22,7 @@ class EventsController < ApplicationController
         lat: event.latitude,
         lng: event.longitude
       }
+    end
   end
 
   def show
