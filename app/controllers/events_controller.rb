@@ -13,7 +13,7 @@ class EventsController < ApplicationController
     end
   end
 
-      
+
  def index
     @events = params[:location] ? search : Event.geocoded #returns events with coordinates
 
@@ -22,12 +22,13 @@ class EventsController < ApplicationController
         lat: event.latitude,
         lng: event.longitude
       }
+    end
   end
 
   def show
       @event = Event.find(params[:id])
   end
-   
+
    def search
     Event.where("name ILIKE '%#{params[:location]}%'")
    end
