@@ -1,10 +1,9 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<form action="/action_page.php">
+<form action="/events">
   Location:<br>
   <input type="text" name="firstname" value=""><br>
 
-  <input type="submit" value="Submit">
   <%= link_to "Submit", events_path, class: "btn btn-primary" %>
 </form>
