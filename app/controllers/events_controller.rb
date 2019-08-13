@@ -7,6 +7,9 @@ class EventsController < ApplicationController
       Authorization: "Bearer NmWpqVwKS2OfJb4PDZY1N0jvI369"
     }
     response = HTTParty.get(url, headers: headers)
+
+    Event.destroy_all
+
     response["events"].each do |event|
       Event.create!(name: event["name"], location: event["venue"]["city"], start_date: event["eventDateLocal"],
       price: event["ticketInfo"]["minListPrice"], url: ("https://stubhub.com" + event["webURI"]))
@@ -15,6 +18,7 @@ class EventsController < ApplicationController
 
 
  def index
+  getstubhubevents(params[:location])
     @events = params[:location] ? search : Event.geocoded #returns events with coordinates
 
     @markers = @events.map do |event|
@@ -26,10 +30,10 @@ class EventsController < ApplicationController
   end
 
   def show
-      @event = Event.find(params[:id])
+    @event = Event.find(params[:id])
   end
 
-   def search
+  def search
     Event.where("name ILIKE '%#{params[:location]}%'")
-   end
+  end
 end
