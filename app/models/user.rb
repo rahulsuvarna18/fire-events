@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :favourites
   has_many :events, through: :favourites
-  validates :first_name, :last_name, :email_address, :password, :avatar, presence: true
-  validates :email_address, uniqueness: true
+  validates :first_name, :last_name, :email, :password, :avatar, presence: true
+  validates :email, uniqueness: true
   mount_uploader :avatar, PhotoUploader
 end
 
