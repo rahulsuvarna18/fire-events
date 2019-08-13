@@ -7,6 +7,9 @@ class EventsController < ApplicationController
       Authorization: "Bearer NmWpqVwKS2OfJb4PDZY1N0jvI369"
     }
     response = HTTParty.get(url, headers: headers)
+
+    Event.destroy_all
+
     response["events"].each do |event|
       Event.create!(name: event["name"], location: event["venue"]["city"], start_date: event["eventDateLocal"],
       price: event["ticketInfo"]["minListPrice"], url: ("https://stubhub.com/" + event["webURI"]))
