@@ -9,12 +9,12 @@ class EventsController < ApplicationController
     response = HTTParty.get(url, headers: headers)
     response["events"].each do |event|
       Event.create!(name: event["name"], location: event["venue"]["city"], start_date: event["eventDateLocal"],
-      price: event["ticketInfo"]["minListPrice"], url: ("https://stubhub.com" + event["webURI"]))
+      price: event["ticketInfo"]["minListPrice"], url: ("https://stubhub.com/" + event["webURI"]))
     end
   end
 
-
- def index
+  def index
+    getstubhubevents(params[:location])
     @events = params[:location] ? search : Event.geocoded #returns events with coordinates
 
     @markers = @events.map do |event|
@@ -26,10 +26,13 @@ class EventsController < ApplicationController
   end
 
   def show
-      @event = Event.find(params[:id])
+    @event = Event.find(params[:id])
   end
 
-   def search
+  def create
+  end
+
+  def search
     Event.where("name ILIKE '%#{params[:location]}%'")
-   end
+  end
 end
