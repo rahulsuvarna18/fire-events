@@ -20,8 +20,9 @@ const searchStubHub = () => {
    })
     .then(response => response.json())
     .then((data) => {
-      console.log(data); // Look at local_names.default
-      const events = data;
+      console.log(data.events);
+      // console.log(data.events); // Look at local_names.default
     });
 }
+
 searchStubHub()
