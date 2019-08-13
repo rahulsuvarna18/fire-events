@@ -1,6 +1,5 @@
 import "bootstrap";
 
-
 // const searchStubHub = () => {
 //   fetch("https://api.stubhub.com/sellers/search/events/v3?city=london", {
 //     method: "GET",
@@ -26,3 +25,4 @@ import "bootstrap";
 // }
 
 // searchStubHub()
+
