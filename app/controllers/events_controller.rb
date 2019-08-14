@@ -96,6 +96,7 @@ class EventsController < ApplicationController
       p event["longitude"]
       p event["start_time"]
       p event["stop_time"]
+    end
   end
 
 
