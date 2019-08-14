@@ -7,29 +7,30 @@
   </div>
 <% end %>
 
-
-<div class="container">
-  <div class="cards">
-    <% @events.each do |event| %>
-    <a href="<%=event.url%>" class="href">
-      <div class="card">
-        <div class="card-content">
-          <h2><%= event.name %></h2>
-          <h2><%= event.price %></h2>
-          <h2><%= event.start_date %></h2>
-          <h2><%= event.location %></h2>
-        </div>
+<div class="container d-flex">
+  <div class="results">
+    <%= render "shared/categories" %>
+    <div class="cards">
+      <% @events.each do |event| %>
+      <a href="<%=event.url%>" class="href">
+        <ul>
+          <li><strong><%= event.name %></strong></li>
+          <li><%= event.start_date %></li>
+     <!--      <li><%= event.price %></li>
+          <li><%= event.category %></li> -->
+        </ul>
+      </a>
+      <% end %>
     </div>
-    </a>
-    <% end %>
   </div>
+  <div
+    id="map"
+    style="width: 100%;
+    height: 600px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
 </div>
 
-<div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
+
 
