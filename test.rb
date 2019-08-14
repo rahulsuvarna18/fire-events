@@ -1,14 +1,15 @@
   require 'httparty'
   require 'json'
 
-    url = 'https://api.stubhub.com/sellers/search/events/v3?date=2019-08-15%20TO%202019-09-15&city=london&rows=100'
+    url = 'http://api.eventful.com/json/events/search?&location=San+Diego&date=Future&app_key=f672q2vdWWFJVGmq'
 
-    headers = {
-      Accept: "application/json",
-      Authorization: "Bearer NmWpqVwKS2OfJb4PDZY1N0jvI369"
-    }
-
-    response = HTTParty.get(url, headers: headers)
-    response["events"].each do |event|
-      p event["name"], event["venue"]["city"], event["eventDateLocal"]
+    response = HTTParty.get(url)
+    x = JSON.parse(response)
+     x["events"]["event"].each do |event|
+      p event["title"]
+      p event["latitude"]
+      p event["longitude"]
+      p event["start_time"]
+      p event["stop_time"]
     end
+

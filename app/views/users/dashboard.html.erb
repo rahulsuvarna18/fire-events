@@ -1,3 +1,12 @@
 <% @user.favourites.each do |favourite| %>
 <%= favourite.event.name %>
+<%= favourite.event.location %>
+<%= favourite.event.start_date %>
+<%= favourite.event.end_date %>
+<%= favourite.event.start_time %>
+<%= favourite.event.end_time %>
+<%= favourite.event.price %>
+<%= favourite.event.url %>
+<%= favourite.event.photo %>
+
 <% end %>
