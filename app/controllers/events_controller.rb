@@ -70,11 +70,16 @@ class EventsController < ApplicationController
     }
     response = HTTParty.get(url, headers: headers)
 
-    Event.destroy_all
+    # Event.destroy_all
+
+    # response["events"].each do |event|
+    #   Event.create!(name: event["name"], location: event["venue"]["city"], start_date: event["eventDateLocal"],
+    #   price: event["ticketInfo"]["minListPrice"], url: ("https://stubhub.com" + event["webURI"]))
+    # end
 
     response["events"].each do |event|
-      Event.create!(name: event["name"], location: event["venue"]["city"], start_date: event["eventDateLocal"],
-      price: event["ticketInfo"]["minListPrice"], url: ("https://stubhub.com" + event["webURI"]))
+      coordinates = Geocoder.search(event["venue"]["city"])
+         @markers = {lat: coordinates.first, lng: coordinates.last}
     end
   end
 
