@@ -1,16 +1,6 @@
-.search {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  background-image: url('https://icdn2.digitaltrends.com/image/google-earth-7.jpg');
-  background-size: cover;
-}
-
 .search-form-control {
   position: relative;
-  width: 80vh;
+  width: 100%;
 }
 
 .search-form-control .btn {
@@ -31,3 +21,38 @@
   outline: none !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
+
+.home-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-image: url('https://icdn2.digitaltrends.com/image/google-earth-7.jpg');
+  background-size: cover;
+}
+
+.home-search-form-control {
+  position: relative;
+  width: 80vh;
+}
+
+.home-search-form-control .btn {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  right: 8px;
+}
+
+.home-search-form-control .form-control {
+  height: 3.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid #E7E7E7;
+}
+
+.home-search-form-control .form-control:focus {
+  border: 1px solid #1EDD88;
+  outline: none !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
