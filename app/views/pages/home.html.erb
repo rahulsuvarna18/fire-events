@@ -1,9 +1,8 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<form action="/events">
+<form method ="get" action="/events">
   Location:<br>
-  <input type="text" name="firstname" value=""><br>
-
-  <%= link_to "Submit", events_path, class: "btn btn-primary" %>
+  <input type="text" name="location" value=""><br>
+    <button type="submit" >Search</button>
 </form>
