@@ -63,6 +63,7 @@ class EventsController < ApplicationController
     @events
   end
 
+
     # def parse_stubhub(location)
     # url = "https://api.stubhub.com/sellers/search/events/v3?city=#{location}&rows=10"
     # # url = "https://api.stubhub.com/sellers/search/events/v3?date=#{start_date}TO#{end_date}&city=#{location}&rows=100"
@@ -84,6 +85,18 @@ class EventsController < ApplicationController
     #      @markers = {lat: coordinates.first, lng: coordinates.last}
     # end
   # end
+
+  def geteventfulevents(location)
+    url = "http://api.eventful.com/json/events/search?&location=#{location}&date=Future&app_key=f672q2vdWWFJVGmq"
+    response = HTTParty.get(url)
+    x = JSON.parse(response)
+     x["events"]["event"].each do |event|
+      p event["title"]
+      p event["latitude"]
+      p event["longitude"]
+      p event["start_time"]
+      p event["stop_time"]
+  end
 
 
  def index
