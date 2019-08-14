@@ -91,17 +91,15 @@ class EventsController < ApplicationController
     response = HTTParty.get(url)
     x = JSON.parse(response)
      x["events"]["event"].each do |event|
-      p event["title"]
-      p event["latitude"]
-      p event["longitude"]
-      p event["start_time"]
-      p event["stop_time"]
+      @events << Event.new(name: event["title"], latitude: event["latitude"], longitude: event["longitude"], start_date: event["start_time"], end_date: event["stop_time"], url: event["url"])
     end
+    return @events
   end
 
 
  def index
-  @events = parse_eventbrite(params[:location])
+
+  @events = parse_eventbrite(params[:location]) + geteventfulevents(params[:location])
 
     @markers = @events.map do |event|
       {
