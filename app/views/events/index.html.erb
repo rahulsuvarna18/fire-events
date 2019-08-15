@@ -1,22 +1,23 @@
+<%= render "shared/mapbar" %>
 <div class="container">
-  <%= simple_form_for :search, url: events_path, method: :get do |f| %>
-    <div class="search-form-control form-group">
+  <%#= simple_form_for :search, url: events_path, method: :get do |f| %>
+<!--     <div class="search-form-control form-group">
       <input class="form-control string required" type="text" name="location" id="search_query" />
       <button type="submit" class="btn btn-flat">
         <i class="fas fa-search"></i> Search
       </button>
-    </div>
-  <% end %>
+    </div> -->
+  <%# end %>
 </div>
 
 <div class="container d-flex" style="height:100vh;">
-  <%= render "shared/categories" %>
+  <%#= render "shared/categories" %>
   <div class="card col-3">
     <div id="scrollingTable" style="overflow-y:scroll">
       <% @events.each do |event| %>
       <a href="<%=event.url%>" class="href">
         <ul style="list-style-type:none;">
-          <%= link_to "<%= event.name %><i class="far fa-heart"></i>", new_favourite_path(event) %>
+          <%#= link_to "<%= event.name %><!-- <i class="far fa-heart"></i>", new_favourite_path(event) %> -->
           <p><strong><%= event.name %></strong></p><i class="far fa-heart"></i>
           <p>Start:<%= event.start_date %></p>
           <p><%= event.category %></p>

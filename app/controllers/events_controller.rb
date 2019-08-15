@@ -36,7 +36,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = parse_using_params
+    @events = parse_using_params.uniq{|x| x.name}
 
       @markers = @events.map do |event|
         {
@@ -69,17 +69,17 @@ class EventsController < ApplicationController
     return @events
   end
 
-  def remove_duplicates
-    @events = parse_using_params
-    @events.each do |event1|
-      @events.each do |event2|
-        if event1[:name] == event2[:name] && event1[:start_date] == event2[:start_date]
-          event.destroy
-        end
-      end
-    end
-    return @events
-  end
+  # def remove_duplicates
+  #   @events = parse_using_params
+  #   @events.each do |event1|
+  #     @events.each do |event2|
+  #       if event1[:name] == event2[:name] && event1[:start_date] == event2[:start_date]
+  #         event.destroy
+  #       end
+  #     end
+  #   end
+  #   return @events
+  # end
 
   def find_eventbrite_category_name(category_id)
     @categories = [
