@@ -15,6 +15,12 @@
         <label>End</label>
         <input type="date" class="form-control" name="end_date">
       </div>
+ <!--      <div class="row">
+        <button name="button" type="submit" class="btn btn-flat">
+          <i class="fas fa-search"></i> Filter
+        </button>
+      </div> -->
+
       </div> <!-- card-body.// -->
     </div>
   </article> <!-- card-group-item.// -->
@@ -29,29 +35,33 @@
         <div id="scrollingTable" style="overflow-y:scroll">
 
         <% @categories.each do |category| %>
-          <div class="custom-control custom-checkbox">
-            <span class="float-right badge badge-light round">
-              <% count = 0 %>
-              <% @events.each do |event| %>
-                <% if event[:category] == category[:name] %>
-                  <% count += 1 %>
-                <% end %>
-              <% end %>
-              <%= count %>
-              </span>
-              <input type="checkbox" class="custom-control-input" id='<%=category[:id]%>' name="categories" value='<%=category[:id]%>'>
-              <label class="custom-control-label" for='<%=category[:id]%>'><%=category[:name]%></label>
-          </div> <!-- form-check.// -->
+          <% count = 0 %>
+          <% @events.each do |event| %>
+            <% if event[:category] == category[:name] %>
+              <% count += 1 %>
+            <% end %>
+          <% end %>
+          <% if count > 5 %>
+            <div class="custom-control custom-checkbox">
+              <span class="float-right badge badge-light round">
+                <%= count %>
+                </span>
+                <input type="checkbox" class="custom-control-input" id='<%=category[:id]%>' name="categories" value='<%=category[:id]%>'>
+                <label class="custom-control-label" for='<%=category[:id]%>'><%=category[:name]%></label>
+            </div> <!-- form-check.// -->
+          <% end %>
         <% end %>
 
+        <div class="row justify-content-center">
+          <button name="button" type="submit" class="btn btn-primary" value="params[:location]"> Reset filter
+          </button>
+        </div>
       </div>
 
       </div> <!-- card-body.// -->
     </div>
   </article> <!-- card-group-item.// -->
-<!--   <button name="button" type="submit" class="btn btn-flat">
-    <i class="fas fa-search"></i> Filter
-  </button> -->
+
 </div> <!-- card.// -->
 <% end %>
 
