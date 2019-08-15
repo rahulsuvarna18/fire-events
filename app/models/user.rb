@@ -9,4 +9,3 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   mount_uploader :avatar, PhotoUploader
 end
-
