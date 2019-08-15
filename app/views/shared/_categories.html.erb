@@ -1,7 +1,6 @@
 <%= simple_form_for :index, url: events_path, method: :get do |f| %>
-
 <input type="hidden" name="location" value='<%=params[:location]%>'>
-<div class="card">
+<div class="card" style="height:100vh">
     <article class="card-group-item">
     <header class="card-header">
       <h6 class="title">Dates </h6>
@@ -26,27 +25,33 @@
     </header>
     <div class="filter-content">
       <div class="card-body">
+
+        <div id="scrollingTable" style="overflow-y:scroll">
+
         <% @categories.each do |category| %>
-        <div class="custom-control custom-checkbox">
-          <span class="float-right badge badge-light round">
-            <% count = 0 %>
-            <% @events.each do |event| %>
-              <% if event[:category] == category[:name] %>
-                <% count += 1 %>
+          <div class="custom-control custom-checkbox">
+            <span class="float-right badge badge-light round">
+              <% count = 0 %>
+              <% @events.each do |event| %>
+                <% if event[:category] == category[:name] %>
+                  <% count += 1 %>
+                <% end %>
               <% end %>
-            <% end %>
-            <%= count %>
-            </span>
-            <input type="checkbox" class="custom-control-input" id='<%=category[:id]%>' name="categories" value='<%=category[:id]%>'>
-            <label class="custom-control-label" for='<%=category[:id]%>'><%=category[:name]%></label>
-        </div> <!-- form-check.// -->
-      <% end %>
+              <%= count %>
+              </span>
+              <input type="checkbox" class="custom-control-input" id='<%=category[:id]%>' name="categories" value='<%=category[:id]%>'>
+              <label class="custom-control-label" for='<%=category[:id]%>'><%=category[:name]%></label>
+          </div> <!-- form-check.// -->
+        <% end %>
+
+      </div>
+
       </div> <!-- card-body.// -->
     </div>
   </article> <!-- card-group-item.// -->
-  <button name="button" type="submit" class="btn btn-flat">
+<!--   <button name="button" type="submit" class="btn btn-flat">
     <i class="fas fa-search"></i> Filter
-  </button>
+  </button> -->
 </div> <!-- card.// -->
 <% end %>
 

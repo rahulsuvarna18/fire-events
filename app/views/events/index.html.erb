@@ -7,11 +7,23 @@
       </button>
     </div>
   <% end %>
-
 </div>
 
 <div class="container d-flex" style="height:100vh;">
   <%= render "shared/categories" %>
+  <div class="card col-3">
+    <div id="scrollingTable" style="overflow-y:scroll">
+      <% @events.each do |event| %>
+      <a href="<%=event.url%>" class="href">
+        <ul style="list-style-type:none;">
+          <p><strong><%= event.name %></strong></p>
+          <p>Start:<%= event.start_date %></p>
+          <p><%= event.category %></p>
+        </ul>
+      </a>
+      <% end %>
+    </div>
+  </div>
   <div
     id="map"
     style="width: 100%;
@@ -21,20 +33,6 @@
   ></div>
 </div>
 
-<div class="container mt-100">
-  <div class="cards">
-    <% @events.each do |event| %>
-    <a href="<%=event.url%>" class="href">
-      <ul>
-        <li><strong><%= event.name %></strong></li>
-        <li><%= event.start_date %></li>
-        <li><%= event.price %></li>
-        <li><%= event.category %></li>
-      </ul>
-    </a>
-    <% end %>
-  </div>
-</div>
 
 
 
