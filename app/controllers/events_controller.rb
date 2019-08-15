@@ -4,9 +4,9 @@ require 'net/http'
 require 'httparty'
 
 class EventsController < ApplicationController
-  def parse_eventbrite(location)
+  def parse_eventbrite(location, categories = nil, start_date = nil, end_date = nil)
     @events = []
-    url = "https://www.eventbriteapi.com/v3/events/search?location.address=#{location}&location.within=5km&expand=venue&token=JVGRXXNSW3CLWBYKG7RQ"
+    url = "https://www.eventbriteapi.com/v3/events/search?location.address=#{location}&categories=#{categories}&start_date.range_start=#{start_date+"T00:00:00"}&start_date.range_end=#{end_date+"T00:00:00"}&location.within=5km&expand=venue&token=JVGRXXNSW3CLWBYKG7RQ"
     # url = "https://www.eventbriteapi.com/v3/events/search/?q=#{name}&location.address=#{address}&categories=111&price=#{price}&start_date.range_start=2019-10-19T15%3A30%3A00&start_date.range_end=2019-11-19T15%3A30%3A00&token=JVGRXXNSW3CLWBYKG7RQ"
     html_file = open(url).read
     html_doc = JSON.parse(html_file)
@@ -29,7 +29,13 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = parse_eventbrite(params[:location]) + geteventfulevents(params[:location])
+    # @events = parse_eventbrite(params[:location]) + geteventfulevents(params[:location])
+    if params[:categories].present? && params[:start_date]
+      @events = parse_eventbrite(params[:location], params[:categories], params[:start_date], params[:end_date])
+    else
+      @events = parse_eventbrite(params[:location])
+    end
+
       @markers = @events.map do |event|
         {
           lat: event.latitude,
@@ -41,6 +47,10 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
   end
+
+  # def category(category_name)
+  #   return @events.where(category: category_name)
+  # end
 
   private
 
