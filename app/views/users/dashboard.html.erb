@@ -1,12 +1,14 @@
 <% @user.favourites.each do |favourite| %>
-<%= favourite.event.name %>
-<%= favourite.event.location %>
-<%= favourite.event.start_date %>
-<%= favourite.event.end_date %>
-<%= favourite.event.start_time %>
-<%= favourite.event.end_time %>
-<%= favourite.event.price %>
-<%= favourite.event.url %>
-<%= favourite.event.photo %>
+  <div class="favourite-dashboard">
+  <h3 id="favourite-name" inside-cards-dashboard"> <%= favourite.event.name %></h3>
+  <p id ="favourite-date" class="inside-cards-dashboard"><%= favourite.event.location %></p>
+  <p id="favourite-start-date" class="inside-cards-dashboard"><%= favourite.event.start_date %></p>
+  <p id="favourite-end-date" class="inside-cards-dashboard"><%= favourite.event.end_date %></p>
+  <p id="favourite-start-time" class="inside-cards-dashboard"><%= favourite.event.start_time %></p>
+  <p id="favourite-end-time" class="inside-cards-dashboard"><%= favourite.event.end_time %></p>
+  <p id= "favourite-price" class="inside-cards-dashboard"><%= favourite.event.price %></p>
+  <p id="favourite-event-url" class="inside-cards-dashboard"><%= favourite.event.url %></p>
+  <p id="favourite-event-photo" class="inside-cards-dashboard"><%= favourite.event.photo %></p>
+  </div>
+  <% end %>
 
-<% end %>
