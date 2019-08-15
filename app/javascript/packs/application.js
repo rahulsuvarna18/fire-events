@@ -4,19 +4,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 
 initMapbox();
 
-const searchAlgoliaPlaces = (event) => {
-  fetch("https://places-dsn.algolia.net/1/places/query", {
-    method: "POST",
-    body: JSON.stringify({ query: event.currentTarget.value })
-  })
-    .then(response => response.json())
-    .then((data) => {
-      console.log(data.hits); // Look at local_names.default
-    });
-};
 
-const input = document.querySelector("#search_query");
-input.addEventListener("keyup", searchAlgoliaPlaces);
 
 // const searchStubHub = () => {
 //   fetch("https://api.stubhub.com/sellers/search/events/v3?city=london", {

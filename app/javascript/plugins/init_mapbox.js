@@ -16,6 +16,8 @@ const initMapbox = () => {
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10'
     });
+    const nav = new mapboxgl.NavigationControl();
+      map.addControl(nav, 'top-left');
     const markers = JSON.parse(mapElement.dataset.markers);
   markers.forEach((marker) => {
     new mapboxgl.Marker()
