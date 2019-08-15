@@ -16,7 +16,8 @@
       <% @events.each do |event| %>
       <a href="<%=event.url%>" class="href">
         <ul style="list-style-type:none;">
-          <p><strong><%= event.name %></strong></p>
+          <%= link_to "<%= event.name %><i class="far fa-heart"></i>", new_favourite_path(event) %>
+          <p><strong><%= event.name %></strong></p><i class="far fa-heart"></i>
           <p>Start:<%= event.start_date %></p>
           <p><%= event.category %></p>
         </ul>
