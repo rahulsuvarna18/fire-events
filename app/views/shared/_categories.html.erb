@@ -34,33 +34,33 @@
 
         <div id="scrollingTable" style="overflow-y:scroll">
 
-        <% @categories.each do |category| %>
-          <% count = 0 %>
-          <% @events.each do |event| %>
-            <% if event[:category] == category[:name] %>
-              <% count += 1 %>
+          <% @categories.each do |category| %>
+            <% count = 0 %>
+            <% @events.each do |event| %>
+              <% if event[:category] == category[:name] %>
+                <% count += 1 %>
+              <% end %>
+            <% end %>
+            <% if count > 5 %>
+              <div class="custom-control custom-checkbox">
+                <span class="float-right badge badge-light round">
+                  <%= count %>
+                  </span>
+                  <input type="checkbox" class="custom-control-input" id='<%=category[:id]%>' name="categories" value='<%=category[:id]%>'>
+                  <label class="custom-control-label" for='<%=category[:id]%>'><%=category[:name]%></label>
+              </div> <!-- form-check.// -->
             <% end %>
           <% end %>
-          <% if count > 5 %>
-            <div class="custom-control custom-checkbox">
-              <span class="float-right badge badge-light round">
-                <%= count %>
-                </span>
-                <input type="checkbox" class="custom-control-input" id='<%=category[:id]%>' name="categories" value='<%=category[:id]%>'>
-                <label class="custom-control-label" for='<%=category[:id]%>'><%=category[:name]%></label>
-            </div> <!-- form-check.// -->
-          <% end %>
-        <% end %>
-
-        <div class="row justify-content-center">
-          <button name="button" type="submit" class="btn btn-primary" value="params[:location]"> Reset filter
-          </button>
         </div>
-      </div>
+
 
       </div> <!-- card-body.// -->
     </div>
   </article> <!-- card-group-item.// -->
+    <div class="row justify-content-center mt-4">
+      <button name="button" type="submit" class="btn btn-primary" value="params[:location]"> Reset filter
+      </button>
+    </div>
 
 </div> <!-- card.// -->
 <% end %>
