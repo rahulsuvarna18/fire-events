@@ -5,11 +5,10 @@ import { initCityAutoComplete } from '../plugins/init_autocomplete';
 import { initHeatMap } from '../plugins/google_heatmaps';
 
 import { initUpdateNavbarOnScroll } from '../components/navbar';
-import { loadDynamicBannerText } from '../components/banner';
+// import { loadDynamicBannerText } from '../components/banner';
 
-loadDynamicBannerText();
+// loadDynamicBannerText();
 initUpdateNavbarOnScroll();
-initMapbox();
 initHeatMap();
 initCityAutoComplete();
 AOS.init();
