@@ -1,8 +1,8 @@
 import Typed from 'typed.js';
 
 const loadDynamicBannerText = () => {
-  new Typed('#banner-typed-text', {
-    strings: ["Become a king", "Learn to make cocktails"],
+  new Typed('#search_query', {
+    strings: ["London"],["Paris"],["New York"],["Rome"],["Vancouver"], ["Bali"],
     typeSpeed: 20,
     loop: true
   });
