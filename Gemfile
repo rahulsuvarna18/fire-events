@@ -22,7 +22,6 @@ gem 'carrierwave', '~> 1.2'
 gem 'httparty'
 gem 'rgeo-geojson', '~> 0.4.3'
 
-
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
@@ -35,3 +34,5 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
 end
+
+gem'faker'
