@@ -20,6 +20,7 @@ gem 'geocoder'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'httparty'
+gem 'rgeo-geojson', '~> 0.4.3'
 
 
 group :development do

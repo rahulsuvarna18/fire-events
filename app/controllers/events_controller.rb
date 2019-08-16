@@ -4,7 +4,7 @@ require 'net/http'
 require 'httparty'
 
 class EventsController < ApplicationController
-  def parse_eventbrite(location)
+  def parse_eventbrite(location, category = nil)
     @events = []
     url = "https://www.eventbriteapi.com/v3/events/search?location.address=#{location}&location.within=5km&expand=venue&token=JVGRXXNSW3CLWBYKG7RQ"
     # url = "https://www.eventbriteapi.com/v3/events/search/?q=#{name}&location.address=#{address}&categories=111&price=#{price}&start_date.range_start=2019-10-19T15%3A30%3A00&start_date.range_end=2019-11-19T15%3A30%3A00&token=JVGRXXNSW3CLWBYKG7RQ"
@@ -18,8 +18,7 @@ class EventsController < ApplicationController
     @events
   end
 
-  def geteventfulevents(location)
-    url = "http://api.eventful.com/json/events/search?&location=#{location}&date=Future&app_key=f672q2vdWWFJVGmq"
+  def geteventfulevents(location, category = nil)
     response = HTTParty.get(url)
     x = JSON.parse(response)
      x["events"]["event"].each do |event|
@@ -29,8 +28,13 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = parse_eventbrite(params[:location]) + geteventfulevents(params[:location])
-      @markers = @events.map do |event|
+    if params[:category].present?
+
+      @events = parse_eventbrite(params[:location], params[:category]) + geteventfulevents(params[:location], params[:category])
+  else
+     @events = parse_eventbrite(params[:location]) + geteventfulevents(params[:location])
+  end
+    @markers = @events.map do |event|
         {
           lat: event.latitude,
           lng: event.longitude
