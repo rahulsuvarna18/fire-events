@@ -76,6 +76,8 @@ GEM
       railties (>= 3.2, < 6.1)
     erubi (1.8.0)
     execjs (2.7.0)
+    faker (2.1.0)
+      i18n (>= 0.7)
     ffi (1.11.1)
     font-awesome-sass (5.6.1)
       sassc (>= 1.11)
@@ -168,6 +170,9 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rgeo (0.6.0)
+    rgeo-geojson (0.4.3)
+      rgeo (~> 0.5)
     sassc (2.0.1)
       ffi (~> 1.9)
       rake
@@ -226,6 +231,7 @@ DEPENDENCIES
   cloudinary (~> 1.9.1)
   devise
   dotenv-rails
+  faker
   font-awesome-sass (~> 5.6.1)
   geocoder
   httparty
@@ -237,6 +243,7 @@ DEPENDENCIES
   puma
   rails (= 5.2.3)
   redis
+  rgeo-geojson (~> 0.4.3)
   sassc-rails
   simple_form
   spring

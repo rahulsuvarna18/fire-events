@@ -1,11 +1,11 @@
 class FavouritesController < ApplicationController
-def create
-  @favourite = Favourite.new
+  def create
+    @favourite = Favourite.new
     @favoutite.save
-end
+  end
 
-def delete
-  @favourite = Favourite.find(params[:id])
-  @favourite.destroy
-end
+  def delete
+    @favourite = Favourite.find(params[:id])
+    @favourite.destroy
+  end
 end

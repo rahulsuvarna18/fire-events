@@ -8,3 +8,15 @@
 .card p {
   text-align: center;
 }
+
+table{
+  height:auto;
+}
+
+#scrollingTable, #headerArea {
+  float:left;width:200px;
+}
+
+#scrollingTable {
+  height:100vh;
+}

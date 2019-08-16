@@ -1,0 +1,66 @@
+<div class="container">
+  <%= simple_form_for :index, url: events_path, method: :get do |f| %>
+    <div class="mapbar">
+
+      <div class="search-form-control form-group" style="width:400px, margin-top:10px">
+        <input class="form-control string required" type="text" name="location" placeholder="London" id="search_query" />
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Start date
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <input type="date" class="dropdown-item" name="start_date">
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          End date
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <input type="date" class="dropdown-item" name="end_date">
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Category
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <% @categories.each do |category| %>
+            <div class="dropdown-item">
+              <% count = 0 %>
+              <% @events.each do |event| %>
+                <% if event[:category] == category[:name] %>
+                  <% count += 1 %>
+                <% end %>
+              <% end %>
+              <% if count > 0 %>
+                <div class="custom-control custom-checkbox">
+                  <span class="float-right badge badge-light round">
+                    <%= count %>
+                    </span>
+                    <input type="checkbox" class="custom-control-input" id='<%=category[:id]%>' name="categories" value='<%=category[:id]%>'>
+                    <label class="custom-control-label" for='<%=category[:id]%>'><%=category[:name]%></label>
+                </div> <!-- form-check.// -->
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+
+      <div class="button">
+        <button name="button" type="submit" class="btn btn-secondary" value="params[:location]"> Reset filter
+        </button>
+      </div>
+
+      <div class="button">
+        <button name="button" type="submit" class="btn btn-primary">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+
+    </div>
+  <% end %>
+</div>

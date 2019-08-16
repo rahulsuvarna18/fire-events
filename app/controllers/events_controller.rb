@@ -4,10 +4,13 @@ require 'net/http'
 require 'httparty'
 
 class EventsController < ApplicationController
-  def parse_eventbrite(location)
+  def parse_eventbrite(location, categories = nil, start_date = nil, end_date = nil)
     @events = []
-    url = "https://www.eventbriteapi.com/v3/events/search?location.address=#{location}&location.within=5km&expand=venue&token=JVGRXXNSW3CLWBYKG7RQ"
-    # url = "https://www.eventbriteapi.com/v3/events/search/?q=#{name}&location.address=#{address}&categories=111&price=#{price}&start_date.range_start=2019-10-19T15%3A30%3A00&start_date.range_end=2019-11-19T15%3A30%3A00&token=JVGRXXNSW3CLWBYKG7RQ"
+    if start_date.present? && end_date.present?
+      url = "https://www.eventbriteapi.com/v3/events/search?location.address=#{location}&categories=#{categories}&start_date.range_start=#{start_date+"T00:00:00"}&start_date.range_end=#{end_date+"T00:00:00"}&location.within=5km&expand=venue&token=JVGRXXNSW3CLWBYKG7RQ"
+    else
+      url = "https://www.eventbriteapi.com/v3/events/search?location.address=#{location}&categories=#{categories}&location.within=5km&expand=venue&token=JVGRXXNSW3CLWBYKG7RQ"
+    end
     html_file = open(url).read
     html_doc = JSON.parse(html_file)
     html_doc["events"].each do |event|
@@ -18,8 +21,12 @@ class EventsController < ApplicationController
     @events
   end
 
-  def geteventfulevents(location)
-    url = "http://api.eventful.com/json/events/search?&location=#{location}&date=Future&app_key=f672q2vdWWFJVGmq"
+  def geteventfulevents(location, categories = nil, start_date = nil, end_date = nil)
+    if start_date.present? && end_date.present?
+      url = "http://api.eventful.com/json/events/search?q=#{find_eventbrite_category_name(categories)}&location=#{location}&date=#{start_date+"00-"+end_date+"00"}&app_key=f672q2vdWWFJVGmq"
+    else
+      url = "http://api.eventful.com/json/events/search?q=#{find_eventbrite_category_name(categories)}&location=#{location}&date=Future&app_key=f672q2vdWWFJVGmq"
+    end
     response = HTTParty.get(url)
     x = JSON.parse(response)
      x["events"]["event"].each do |event|
@@ -29,7 +36,8 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = parse_eventbrite(params[:location]) + geteventfulevents(params[:location])
+    @events = parse_using_params.uniq{|x| x.name}
+
       @markers = @events.map do |event|
         {
           lat: event.latitude,
@@ -43,6 +51,35 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def parse_using_params
+    if params[:location].present? && params[:categories].present? && params[:start_date].present? && params[:end_date].present?
+      @events = parse_eventbrite(params[:location], params[:categories], params[:start_date], params[:end_date]) + geteventfulevents(params[:location], params[:categories], params[:start_date], params[:end_date])
+    elsif params[:location].present? && params[:categories].present?
+      @events = parse_eventbrite(params[:location], params[:categories]) + geteventfulevents(params[:location], params[:categories])
+    # elsif params[:start_date].present?
+    #   @events = parse_eventbrite(params[:location], params[:categories], params[:start_date])
+    # elsif params[:end_date].present?
+    #   @events = parse_eventbrite(params[:location], params[:categories], params[:end_date])
+    elsif params[:location].present?
+      @events = parse_eventbrite(params[:location]) + geteventfulevents(params[:location])
+    else
+      @events = Event.all
+    end
+    return @events
+  end
+
+  # def remove_duplicates
+  #   @events = parse_using_params
+  #   @events.each do |event1|
+  #     @events.each do |event2|
+  #       if event1[:name] == event2[:name] && event1[:start_date] == event2[:start_date]
+  #         event.destroy
+  #       end
+  #     end
+  #   end
+  #   return @events
+  # end
 
   def find_eventbrite_category_name(category_id)
     @categories = [

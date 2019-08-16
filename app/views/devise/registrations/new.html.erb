@@ -4,6 +4,15 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+      <%= f.input :avatar_cache, as: :hidden %>
+      <%= f.input :first_name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "first name" }%>
+      <%= f.input :last_name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "last name" }%>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -19,15 +28,6 @@
                   required: false,
                   autofocus: true,
                   input_html: { autocomplete: "avatar" }%>
-      <%= f.input :avatar_cache, as: :hidden %>
-      <%= f.input :first_name,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "first name" }%>
-      <%= f.input :last_name,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "last name" }%>
 
   </div>
 

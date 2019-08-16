@@ -1,6 +1,6 @@
 .search-form-control {
   position: relative;
-  width: 100%;
+  width: 30%;
 }
 
 .search-form-control .btn {
@@ -10,8 +10,12 @@
   right: 8px;
 }
 
+.search-form-control .form-group{
+  padding-top: 11px;
+}
+
 .search-form-control .form-control {
-  height: 3.5rem;
+  height: 2.4rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border: 1px solid #E7E7E7;
 }
@@ -26,10 +30,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100%;
-  background-image: url('https://icdn2.digitaltrends.com/image/google-earth-7.jpg');
-  background-size: cover;
+  position: absolute;
+  top: 400px;
+  left: 600px;
+  z-index: 1;
 }
 
 .home-search-form-control {
