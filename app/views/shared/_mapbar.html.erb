@@ -49,18 +49,18 @@
         </div>
       </div>
 
-
-      <div class="button">
-        <button name="button" type="submit" class="btn btn-secondary" value="params[:location]"> Reset filter
-        </button>
-      </div>
-
       <div class="button">
         <button name="button" type="submit" class="btn btn-primary">
           <i class="fas fa-search"></i> Search
         </button>
       </div>
-
-    </div>
   <% end %>
+    <%= simple_form_for :index, url: events_path, method: :get do |f| %>
+      <div class="button">
+        <button name="button" type="submit" class="btn btn-secondary"> Reset filters
+        </button>
+      </div>
+      <input type="hidden" value='<%=params[:location]%>'>
+     <%end%>
+    </div>
 </div>
