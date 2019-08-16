@@ -1,17 +1,9 @@
 import "bootstrap";
-import 'mapbox-gl/dist/mapbox-gl.css';
-import { initMapbox } from '../plugins/init_mapbox';
 import { initCityAutoComplete } from '../plugins/init_autocomplete';
 import { initHeatMap } from '../plugins/google_heatmaps';
 
-import { initUpdateNavbarOnScroll } from '../components/navbar';
-// import { loadDynamicBannerText } from '../components/banner';
-
-// loadDynamicBannerText();
-initUpdateNavbarOnScroll();
 initHeatMap();
 initCityAutoComplete();
-AOS.init();
 
 
 
