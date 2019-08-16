@@ -27,12 +27,20 @@
     </div>
   </div>
   <div
-    id="map"
-    style="width: 100%;
-    height: 100vh;"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  id="map"
+  style="width: 100%;
+  height: 100vh;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>
+  <meta charset='utf-8' />
+  <title>Create a heatmap layer</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet' />
+  <style>
+
+  </style>
 </div>
 
 
