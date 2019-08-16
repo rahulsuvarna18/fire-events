@@ -18,9 +18,9 @@
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <% if current_user %>
-          <%= link_to "Welcome, #{current_user.first_name} #{current_user.last_name}" , "users/dashboard", class: "dropdown-item" %>
+          <%= link_to "Welcome, #{current_user.first_name} #{current_user.last_name}" , users_dashboard_path, class: "dropdown-item" %>
           <% end %>
-            <%= link_to "Dashboard", "users/dashboard", class: "dropdown-item" %>
+            <%= link_to "Dashboard", users_dashboard_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
