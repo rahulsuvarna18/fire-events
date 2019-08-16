@@ -15,7 +15,7 @@ class EventsController < ApplicationController
     html_doc = JSON.parse(html_file)
     html_doc["events"].each do |event|
       if event["venue"]["city"] =! nil
-        @events << Event.new(name: event["name"]["text"], latitude: event["venue"]["latitude"], longitude: event["venue"]["longitude"], start_date: event["start"]["local"], end_date: event["end"]["local"], url: event["url"], category: find_eventbrite_category_name(event["category_id"].to_i))
+        @events << Event.new(name: event["name"]["text"], description: event["description"]["text"], latitude: event["venue"]["latitude"], longitude: event["venue"]["longitude"], start_date: event["start"]["local"], end_date: event["end"]["local"], url: event["url"], category: find_eventbrite_category_name(event["category_id"].to_i))
       end
     end
     @events
@@ -30,7 +30,7 @@ class EventsController < ApplicationController
     response = HTTParty.get(url)
     x = JSON.parse(response)
      x["events"]["event"].each do |event|
-      @events << Event.new(name: event["title"], latitude: event["latitude"], longitude: event["longitude"], start_date: event["start_time"], end_date: event["stop_time"], url: event["url"])
+      @events << Event.new(name: event["title"], description: event["description"], latitude: event["latitude"], longitude: event["longitude"], start_date: event["start_time"], end_date: event["stop_time"], url: event["url"])
     end
     @events
   end

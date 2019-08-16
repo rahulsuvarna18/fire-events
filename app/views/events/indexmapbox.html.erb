@@ -16,28 +16,23 @@
     <div id="scrollingTable" style="overflow-y:scroll">
       <% @events.each do |event| %>
       <a href="<%=event.url%>" class="href">
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <ul style="list-style-type:none;">
-              <%#= link_to "<%= event.name %><!-- <i class="far fa-heart"></i>", new_favourite_path(event) %> -->
-              <p><strong><%= event.name %></strong></p><i class="far fa-heart"></i>
-            </ul>
-          </div>
-          <div class="flip-card-back">
-            <ul style="list-style-type:none;">
-              <p><%= event.start_date %> - <%= event.end_date %></p>
-              <p><%= event.category %></p>
-              <p><%= event.location %></p>
-            </ul>
-          </div>
-        </div>
-      </div>
+        <ul style="list-style-type:none;">
+          <%#= link_to "<%= event.name %><!-- <i class="far fa-heart"></i>", new_favourite_path(event) %> -->
+          <p><strong><%= event.name %></strong></p><i class="far fa-heart"></i>
+          <p>Start:<%= event.start_date %></p>
+          <p><%= event.category %></p>
+        </ul>
       </a>
       <% end %>
     </div>
   </div>
-    <div id="map" data-markers="<%= @markers.to_json %>" style="height: 100%; width: 100%"></div>
+  <div
+  id="map"
+  style="width: 100%;
+  height: 100vh;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
   <meta charset='utf-8' />
   <title>Create a heatmap layer</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
@@ -47,27 +42,6 @@
 
   </style>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
