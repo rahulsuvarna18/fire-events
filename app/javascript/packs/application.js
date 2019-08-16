@@ -4,8 +4,16 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initCityAutoComplete } from '../plugins/init_autocomplete';
 import { initHeatMap } from '../plugins/google_heatmaps';
 
+import { initUpdateNavbarOnScroll } from '../components/navbar';
+import { loadDynamicBannerText } from '../components/banner';
+
+loadDynamicBannerText();
+initUpdateNavbarOnScroll();
+initMapbox();
 initHeatMap();
 initCityAutoComplete();
+AOS.init();
+
 
 
 // const searchStubHub = () => {

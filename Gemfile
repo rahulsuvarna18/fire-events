@@ -21,6 +21,9 @@ gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'httparty'
 gem 'rgeo-geojson', '~> 0.4.3'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2', '~> 0.2.2'
+gem 'faker'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -35,4 +38,3 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
-gem'faker'
