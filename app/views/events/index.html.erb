@@ -16,12 +16,23 @@
     <div id="scrollingTable" style="overflow-y:scroll">
       <% @events.each do |event| %>
       <a href="<%=event.url%>" class="href">
-        <ul style="list-style-type:none;">
-          <%#= link_to "<%= event.name %><!-- <i class="far fa-heart"></i>", new_favourite_path(event) %> -->
-          <p><strong><%= event.name %></strong></p><i class="far fa-heart"></i>
-          <p>Start:<%= event.start_date %></p>
-          <p><%= event.category %></p>
-        </ul>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <ul style="list-style-type:none;">
+              <%#= link_to "<%= event.name %><!-- <i class="far fa-heart"></i>", new_favourite_path(event) %> -->
+              <p><strong><%= event.name %></strong></p><i class="far fa-heart"></i>
+            </ul>
+          </div>
+          <div class="flip-card-back">
+            <ul style="list-style-type:none;">
+              <p><%= event.start_date %> - <%= event.end_date %></p>
+              <p><%= event.category %></p>
+              <p><%= event.location %></p>
+            </ul>
+          </div>
+        </div>
+      </div>
       </a>
       <% end %>
     </div>
