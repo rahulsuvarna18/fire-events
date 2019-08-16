@@ -1,14 +1,24 @@
-<% @user.favourites.each do |favourite| %>
-  <div class="favourite-dashboard">
-  <h3 id="favourite-name" inside-cards-dashboard"> <%= favourite.event.name %></h3>
-  <p id ="favourite-date" class="inside-cards-dashboard"><%= favourite.event.location %></p>
-  <p id="favourite-start-date" class="inside-cards-dashboard"><%= favourite.event.start_date %></p>
-  <p id="favourite-end-date" class="inside-cards-dashboard"><%= favourite.event.end_date %></p>
-  <p id="favourite-start-time" class="inside-cards-dashboard"><%= favourite.event.start_time %></p>
-  <p id="favourite-end-time" class="inside-cards-dashboard"><%= favourite.event.end_time %></p>
-  <p id= "favourite-price" class="inside-cards-dashboard"><%= favourite.event.price %></p>
-  <p id="favourite-event-url" class="inside-cards-dashboard"><%= favourite.event.url %></p>
-  <p id="favourite-event-photo" class="inside-cards-dashboard"><%= favourite.event.photo %></p>
-  </div>
-  <% end %>
+<div class="dashboard">
+  <h1>Followed events</h1>
+  <% @user.favourites.each do |favourite| %>
+    <div class="favourite-dashboard">
+      <div class="dashboard-photo">
+      <img src="https://res.cloudinary.com/rahulsuvarna18/image/upload/v1565753722/apgiiicslhy1zua0toqp.png" alt="">
+      </div>
+      <div class="dashboard-text">
+        <h5 id="favourite-name" class="inside-cards-dashboard"> <strong> <%= favourite.event.name %></strong></h5>
+        <p id ="favourite-date" class="inside-cards-dashboard"><strong><%= favourite.event.location %></strong></p>
+        <p id="favourite-start-date" class="inside-cards-dashboard"><%= favourite.event.start_date.strftime("%A, %e, %B") %></p>
+        <p id="favourite-start-time" class="inside-cards-dashboard"><%= favourite.event.start_time.strftime("%H, %M") %></p>
 
+        <p id= "favourite-price" class="inside-cards-dashboard"><%= favourite.event.price %></p>
+        <p id="favourite-event-photo" class="inside-cards-dashboard"><%= favourite.event.photo %></p>
+        <p id="favourite-event-url" class="inside-cards-dashboard"><%= favourite.event.url %></p>
+      </div>
+    <div class="dasboard-heart-link">
+      <i class="fas fa-heart"></i>
+      <i class="fas fa-external-link-alt"></i>
+    </div>
+    </div>
+    <% end %>
+</div>
