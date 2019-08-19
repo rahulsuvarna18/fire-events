@@ -1,20 +1,18 @@
 <%#= render "shared/mapbar" %>
-<div class="container d-flex" style="height:87vh;">
-  <div class="card col-3">
+<div class="center-container d-flex" style="height:87vh;">
+  <div class="col-3" style="padding-left: 0px; padding-right: 9px;">
     <div id="scrollingTable" style="overflow-y:scroll">
       <% @events.each do |event| %>
       <a href="<%=event.url%>" class="href" target="_blank">
-      <div class="flip-card" style="margin-bottom: 30px;">
+      <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-              <ul style="list-style-type:none;">
-                <p><strong><%= event.name %></strong></p>
-              </ul>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=event.photo%>)">
             </div>
-          </div>
+           </div>
           <div class="flip-card-back">
             <ul style="list-style-type:none;">
+              <p><strong><%= event.name %></strong></p>
               <p><%= event.start_date %> - <%= event.end_date %></p>
               <p><%= event.category %></p>
               <p><%= event.location %></p>
