@@ -153,3 +153,32 @@ map.addLayer({
 export { initMapbox };
 
 
+
+
+
+
+
+
+
+
+
+
+ const heatmap = new google.maps.visualization.HeatmapLayer({
+          data: getPoints(),
+          map: map
+        });
+        google.maps.event.addListener(map, 'zoom_changed', function() {
+  var zoom = map.getZoom();
+  if (zoom > 12) {
+    // hide the heatmap, show the markers
+    heatmap.setMap(null);
+    map.data.setMap(map);
+  } else {
+    // hide the markers, show the heatmap
+    heatmap.setMap(map);
+    map.data.setMap(null);
+  }
+})
+
+
+
