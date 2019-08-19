@@ -1,33 +1,53 @@
-loader,
-loader:before,
-loader:after
-  {display:block;position:absolute}
+#loader-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #141414;;
+}
 
-loader{width:100%;height:100%}
-
-loader:before,
-loader:after{
-  top:50%;
-  left:50%;
-  content:"";
-  border-radius:50%;
-  border:4px solid #a3a3a3;
-  border-top-color:#88001b
+.loader-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: {
+    top: -10px;
+    left: -52px;
   }
+  font-size: 125%;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fefefe;
+}
 
-loader:before{
-  width:200px;
-  height:200px;
-  animation:loading 5s linear infinite
+.loader-circle {
+  width: 180px;
+  height: 180px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  border: {
+    top: 5px solid #fefefe;
+    bottom: 2px solid transparent;
+    left: 2px solid transparent;
+    right: 2px solid transparent;
+    radius: 50%;
   }
+  margin: {
+    top: -90px;
+    left: -90px;
+  }
+  animation: loader 1s infinite linear;
+}
 
-loader:after{
-  width:150px;
-  height:150px;
-  animation:loading 5s linear infinite reverse
+@keyframes loader {
+  from {
+    transform: rotate(0deg);
   }
-
-@keyframes loading{
-  from{transform:translate(-50%,-50%) rotate(0deg)}
-  to{transform:translate(-50%,-50%) rotate(360deg)}
+  to {
+    transform: rotate(360deg);
   }
+}

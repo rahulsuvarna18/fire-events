@@ -21,4 +21,3 @@ function googleAuthenticate {
   });
 }
 
-export { googleAuthenticate }
