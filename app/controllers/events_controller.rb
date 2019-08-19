@@ -45,6 +45,19 @@ class EventsController < ApplicationController
           lng: event.longitude
         }
       end
+    @event = Event.new
+  end
+
+  def create
+    @event = Event.new(event_params)
+    @event.description = @event.description.gsub(/\n+/, '').gsub(/\r+/, '')
+    @event.save
+    @favourite = Favourite.new(event_name: @event.name, event_id: @event.id, user: current_user)
+    @favourite.save
+    respond_to do |format|
+      format.html { redirect_to events_path }
+      format.js
+    end
   end
 
   def show
@@ -52,6 +65,10 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def event_params
+    params.require(:event).permit(:name, :location, :start_date, :end_date, :start_time, :end_time, :price, :url, :photo, :category, :description)
+  end
 
   def parse_using_params
     if params[:location].present? && params[:categories].present? && params[:start_date].present? && params[:end_date].present?
