@@ -15,7 +15,8 @@ class EventsController < ApplicationController
     html_doc = JSON.parse(html_file)
     html_doc["events"].each do |event|
       if event["venue"]["city"] =! nil
-        @events << Event.new(name: event["name"]["text"], description: event["description"]["text"], latitude: event["venue"]["latitude"], longitude: event["venue"]["longitude"], start_date: event["start"]["local"], end_date: event["end"]["local"], url: event["url"], category: find_eventbrite_category_name(event["category_id"].to_i))
+        photo = event["logo"]["original"]["url"] if event["logo"].present?
+        @events << Event.new(name: event["name"]["text"], description: event["description"]["text"], latitude: event["venue"]["latitude"], longitude: event["venue"]["longitude"], start_date: event["start"]["local"], end_date: event["end"]["local"], url: event["url"], category: find_eventbrite_category_name(event["category_id"].to_i), photo: photo)
       end
     end
     @events
@@ -31,7 +32,8 @@ class EventsController < ApplicationController
     x = JSON.parse(response)
     @category_count = x["total_items"].to_i
      x["events"]["event"].each do |event|
-      @events << Event.new(name: event["title"], description: event["description"], latitude: event["latitude"], longitude: event["longitude"], start_date: event["start_time"], end_date: event["stop_time"], url: event["url"])
+      photo = event["image"]["url"] if event["image"].present?
+      @events << Event.new(name: event["title"], description: event["description"], latitude: event["latitude"], longitude: event["longitude"], start_date: event["start_time"], end_date: event["stop_time"], url: event["url"], photo: photo)
     end
     @events
   end
@@ -45,6 +47,19 @@ class EventsController < ApplicationController
           lng: event.longitude
         }
       end
+    @event = Event.new
+  end
+
+  def create
+    @event = Event.new(event_params)
+    @event.description = @event.description.gsub(/\n+/, '').gsub(/\r+/, '')
+    @event.save
+    @favourite = Favourite.new(event_name: @event.name, event_id: @event.id, user: current_user)
+    @favourite.save
+    respond_to do |format|
+      format.html { redirect_to events_path }
+      format.js
+    end
   end
 
   def show
@@ -52,6 +67,10 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def event_params
+    params.require(:event).permit(:name, :location, :start_date, :end_date, :start_time, :end_time, :price, :url, :photo, :category, :description)
+  end
 
   def parse_using_params
     if params[:location].present? && params[:categories].present? && params[:start_date].present? && params[:end_date].present?

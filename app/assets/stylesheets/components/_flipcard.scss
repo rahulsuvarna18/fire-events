@@ -5,12 +5,11 @@ ul{
 
 .flip-card {
   background-color: transparent;
-  width: 100%;
-  height: 150px;
+  height: 175px;
   border: 1px solid #f1f1f1;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
   text-align:center;
-  padding: 10px;
+  margin: 15px;
 }
 
 /* This container is needed to position the front and back side */
@@ -47,4 +46,5 @@ ul{
   background-color: white;
   color: black;
   transform: rotateY(180deg);
+  border-radius: 5px;
 }
