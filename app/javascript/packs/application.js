@@ -5,4 +5,3 @@ import { initHeatMap } from '../plugins/google_heatmaps';
 
 initHeatMap();
 initCityAutoComplete();
-googleAuthenticate();
