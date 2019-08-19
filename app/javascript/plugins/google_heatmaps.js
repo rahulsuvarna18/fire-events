@@ -56,10 +56,4 @@ function initHeatMap() {
   map.panToBounds(getBounds()); //auto-center
  }
 
-
-
-
-
-
-
-export {initHeatMap};
+export { initHeatMap };
