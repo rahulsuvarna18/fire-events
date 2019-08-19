@@ -10,7 +10,7 @@
   <%# end %>
 </div>
 
-<div class="container d-flex" style="height:100vh;">
+<div class="container d-flex" style="height:87vh; width:100vh;">
   <%#= render "shared/categories" %>
   <div class="card col-3">
     <div id="scrollingTable" style="overflow-y:scroll">
@@ -19,16 +19,18 @@
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <ul style="list-style-type:none;">
-              <%#= link_to "<%= event.name %><!-- <i class="far fa-heart"></i>", new_favourite_path(event) %> -->
-              <p><strong><%= event.name %></strong></p><i class="far fa-heart"></i>
-            </ul>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+              <ul style="list-style-type:none;">
+                <p><strong><%= event.name %></strong></p>
+              </ul>
+            </div>
           </div>
           <div class="flip-card-back">
             <ul style="list-style-type:none;">
               <p><%= event.start_date %> - <%= event.end_date %></p>
               <p><%= event.category %></p>
               <p><%= event.location %></p>
+              <a href="new_favourite_path(event.id)" class="href"><i class="far fa-heart"></i></a>
             </ul>
           </div>
         </div>
