@@ -2,6 +2,6 @@ import flatpickr from "flatpickr";
 
 //const flatpickr = require("flatpickr");
 
-flatpickr("#dropdownMenuButton", {});
+const flatpicker = () => flatpickr("#dropdownMenuButton", {});
 
-export {flatpickr}
+export {flatpicker}
