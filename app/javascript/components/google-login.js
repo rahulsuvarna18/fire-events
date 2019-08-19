@@ -6,7 +6,7 @@
 //   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 // }
 
-function googleAuthenticate {
+function googleAuthenticate = () => {
   gapi.load('auth2', function() {
     auth2 = gapi.auth2.init({
       client_id: '529865086294-4tkbq67f0eq1504dojum974gimd1g0fa.apps.googleusercontent.com',
