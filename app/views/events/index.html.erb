@@ -1,17 +1,5 @@
 <%= render "shared/mapbar" %>
-<div class="container">
-  <%#= simple_form_for :search, url: events_path, method: :get do |f| %>
-<!--     <div class="search-form-control form-group">
-      <input class="form-control string required" type="text" name="location" id="search_query" />
-      <button type="submit" class="btn btn-flat">
-        <i class="fas fa-search"></i> Search
-      </button>
-    </div> -->
-  <%# end %>
-</div>
-
 <div class="container d-flex" style="height:87vh; width:100vh;">
-  <%#= render "shared/categories" %>
   <div class="card col-3">
     <div id="scrollingTable" style="overflow-y:scroll">
       <% @events.each do |event| %>
@@ -39,15 +27,12 @@
       <% end %>
     </div>
   </div>
-    <div id="map" data-markers="<%= @markers.to_json %>" style="height: 100%; width: 100%"></div>
-  <meta charset='utf-8' />
-  <title>Create a heatmap layer</title>
-  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js'></script>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet' />
-  <style>
-
-  </style>
+  <div id="map" data-markers="<%= @markers.to_json %>" style="height: 100%; width: 100%"></div>
+<!--     <meta charset='utf-8' />
+    <title>Create a heatmap layer</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet' /> -->
 </div>
 
 
