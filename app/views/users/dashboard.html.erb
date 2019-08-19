@@ -1,7 +1,7 @@
 <div class="dashboard">
   <h1>Followed events</h1>
   <% @user.favourites.each do |favourite| %>
-    <div class="favourite-dashboard">
+    <div class="favourite-dashboard" id="favourite_<%= favourite.id %>">
       <div class="dashboard-photo">
       <img src="https://res.cloudinary.com/rahulsuvarna18/image/upload/v1565753722/apgiiicslhy1zua0toqp.png" alt="">
       </div>
@@ -9,15 +9,18 @@
         <h5 id="favourite-name" class="inside-cards-dashboard"> <strong> <%= favourite.event.name %></strong></h5>
         <p id ="favourite-date" class="inside-cards-dashboard"><strong><%= favourite.event.location %></strong></p>
         <p id="favourite-start-date" class="inside-cards-dashboard"><%= favourite.event.start_date.strftime("%A, %e, %B") %></p>
-        <p id="favourite-start-time" class="inside-cards-dashboard"><%= favourite.event.start_time.strftime("%H, %M") %></p>
+        <p id="favourite-start-time" class="inside-cards-dashboard"><%= favourite.event.start_time.strftime("%H:%M%P") %></p>
 
         <p id= "favourite-price" class="inside-cards-dashboard"><%= favourite.event.price %></p>
         <p id="favourite-event-photo" class="inside-cards-dashboard"><%= favourite.event.photo %></p>
         <p id="favourite-event-url" class="inside-cards-dashboard"><%= favourite.event.url %></p>
       </div>
     <div class="dasboard-heart-link">
-      <i class="fas fa-heart"></i>
-      <i class="fas fa-external-link-alt"></i>
+      <!-- <a href=""><i class="fas fa-heart"></i></a> -->
+      <%= link_to event_favourite_path(favourite.event, favourite), method: :delete, remote: true do %>
+        <i class="fas fa-heart"></i>
+      <% end %>
+      <a href="<%favourite.event.url%>"><i class="fas fa-external-link-alt"></i></a>
     </div>
     </div>
     <% end %>
