@@ -27,3 +27,4 @@ event_id: Event.all.sample.id,
 user_id: 2
     ).save
 end
+

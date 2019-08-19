@@ -1,51 +1,37 @@
 <%= render "shared/mapbar" %>
-<div class="container">
-  <%#= simple_form_for :search, url: events_path, method: :get do |f| %>
-<!--     <div class="search-form-control form-group">
-      <input class="form-control string required" type="text" name="location" id="search_query" />
-      <button type="submit" class="btn btn-flat">
-        <i class="fas fa-search"></i> Search
-      </button>
-    </div> -->
-  <%# end %>
-</div>
-
-<div class="container d-flex" style="height:100vh;">
-  <%#= render "shared/categories" %>
+<div class="container d-flex" style="height:87vh;">
   <div class="card col-3">
     <div id="scrollingTable" style="overflow-y:scroll">
       <% @events.each do |event| %>
-        <a href="<%=event.url%>" class="href" target="_blank">
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
+      <a href="<%=event.url%>" class="href" target="_blank">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
               <ul style="list-style-type:none;">
-                <%#= link_to "<%= event.name %><!-- <i class="far fa-heart"></i>", new_favourite_path(event) %> -->
-                <p><strong><%= event.name %></strong></p><i class="far fa-heart"></i>
+                <p><strong><%= event.name %></strong></p>
               </ul>
             </div>
-            <div class="flip-card-back">
-              <ul style="list-style-type:none;">
-                <p><%= event.start_date %> - <%= event.end_date %></p>
-                <p><%= event.category %></p>
-                <p><%= event.location %></p>
-              </ul>
-            </div>
+          </div>
+          <div class="flip-card-back">
+            <ul style="list-style-type:none;">
+              <p><%= event.start_date %> - <%= event.end_date %></p>
+              <p><%= event.category %></p>
+              <p><%= event.location %></p>
+              <a href="new_favourite_path(event.id)" class="href"><i class="far fa-heart"></i></a>
+            </ul>
           </div>
         </div>
         </a>
       <% end %>
     </div>
   </div>
-    <div id="map" data-markers="<%= @markers.to_json %>" style="height: 100%; width: 100%"></div>
-  <meta charset='utf-8' />
-  <title>Create a heatmap layer</title>
-  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js'></script>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet' />
-  <style>
-
-  </style>
+  <div id="map" data-markers="<%= @markers.to_json %>" style="height: 100%; width: 100%"></div>
+<!--     <meta charset='utf-8' />
+    <title>Create a heatmap layer</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet' /> -->
 </div>
 
 
