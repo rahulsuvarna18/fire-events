@@ -1,11 +1,10 @@
 <div class="container">
   <%= simple_form_for :index, url: events_path, method: :get do |f| %>
     <div class="mapbar">
-
       <div class="search-form-control form-group" style="width:400px, margin-top:10px">
-        <input class="form-control string required" type="text" name="location" placeholder="London" id="search_query" />
+      <%= text_field_tag :location, params[:location].capitalize, class: "form-control string required" %>
+ <!--      <input class="form-control string required" type="text" name="location" placeholder="London" > -->
       </div>
-
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Start date
@@ -27,9 +26,14 @@
           Category
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
           <% @categories.each do |category| %>
             <div class="dropdown-item">
-              <% count = 0 %>
+              <% if params[:categories].present? && params[:categories] == category[:name] %>
+                <% count = @category_count %>
+              <% else %>
+                <% count = 0 %>
+              <% end %>
               <% @events.each do |event| %>
                 <% if event[:category] == category[:name] %>
                   <% count += 1 %>
@@ -48,7 +52,6 @@
           <% end %>
         </div>
       </div>
-
       <div class="button">
         <button name="button" type="submit" class="btn btn-primary">
           <i class="fas fa-search"></i> Search
@@ -57,10 +60,9 @@
   <% end %>
     <%= simple_form_for :index, url: events_path, method: :get do |f| %>
       <div class="button">
-        <button name="button" type="submit" class="btn btn-secondary"> Reset filters
+        <button name="location" type="submit" class="btn btn-warning" value="<%=params[:location]%>"> Reset filters
         </button>
       </div>
-      <input type="hidden" value='<%=params[:location]%>'>
      <%end%>
     </div>
 </div>
