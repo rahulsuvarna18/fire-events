@@ -1,4 +1,6 @@
-const flatpickr = require("flatpickr");
+import flatpickr from "flatpickr";
+
+//const flatpickr = require("flatpickr");
 
 flatpickr("#dropdownMenuButton", {});
 

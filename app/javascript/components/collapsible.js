@@ -1,4 +1,4 @@
-function collapsible = () => {
+const collapsible = () => {
   $("#minimise").on("click", function(){
     $("#cards").removeClass("col-3");
     $("#cards").addClass("col-3");
