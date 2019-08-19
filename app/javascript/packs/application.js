@@ -5,8 +5,8 @@ import { googleAuthenticate } from '../components/google-login';
 import { clusterMarkers } from '../plugins/google_heatmaps';
 import { flatpickr } from '..plugins/flatpickr';
 
+
 initHeatMap();
-clusterMarkers();
 initCityAutoComplete();
 googleAuthenticate();
 flatpickr();
