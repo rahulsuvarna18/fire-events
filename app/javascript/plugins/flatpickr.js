@@ -1,7 +1,12 @@
 import flatpickr from "flatpickr";
+import "flatpickr/dist/flatpickr.min.css"
 
-//const flatpickr = require("flatpickr");
+const datepickr = () => {
+  $("#dropdownMenuButton").flatpickr({mode: "range"});
+  var element = document.getElementById('dropdownMenuButton');
+  const date = flatpickr(element, {
+    mode: "range"
+});
+}
 
-const flatpicker = () => flatpickr("#dropdownMenuButton", {});
-
-export {flatpicker}
+export {datepickr}

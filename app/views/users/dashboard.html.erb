@@ -1,3 +1,4 @@
+<%= render 'shared/solid-navbar' %>
 <div class="dashboard">
   <h1> <strong>Followed events</strong></h1>
   <% if @user.favourites.empty? %>
@@ -21,9 +22,9 @@
     </div>
     <div class="dasboard-heart-link">
       <%= link_to event_favourite_path(favourite.event, favourite), method: :delete, remote: true do %>
-        <i class="far fa-heart"></i>
-  <% end %>
-      <a href="<%= favourite.event.url %>"><i class="fas fa-external-link-alt"></i></a>
+        <i class="fas fa-heart"></i>
+      <% end %>
+      <a href="<%= favourite.event.url %>" target="_blank"><i class="fas fa-external-link-alt"></i></a>
     </div>
   </div>
     <% end %>

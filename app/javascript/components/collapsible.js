@@ -1,9 +1,13 @@
 const collapsible = () => {
-  $("#minimise").on("click", function(){
-    $("#cards").removeClass("col-3");
-    $("#cards").addClass("col-3");
-    $(this).removeClass("col-3");
-    $(this).addClass("col-3");
+  $("#hide_cards").on("click", function(){
+    $("#cards").hide();
+    $("#hide_cards").hide();
+    $("#show_cards").show();
+});
+  $("#show_cards").on("click", function(){
+    $("#cards").show();
+    $("#hide_cards").show();
+    $("#show_cards").hide();
 });
 }
 

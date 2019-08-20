@@ -1,7 +1,7 @@
 <%= render "shared/mapbar" %>
-<div class="center-container d-flex" style="height:100vh;">
-  <button id="minimise">+</button>
-  <div class="col-3" style="padding-left: 0px; padding-right: 9px;">
+<div class="center-container d-flex" style="height:89vh;">
+  <button id="hide_cards">-</button>
+  <div class="col-3" id="cards" style="padding-left: 0px; padding-right: 9px;">
     <div id="scrollingTable" style="overflow-y:scroll">
       <% @events.each do |event| %>
         <a href="<%=event.url%>" class="href" target="_blank">
@@ -18,11 +18,11 @@
                   <p><%= event.location %></p>
                   <%= simple_form_for @event, remote: true do |f| %>
                     <%= f.hidden_field :name, value: event.name %>
-                    <%= f.hidden_field :location, value: event.location %>
+                    <%#= f.hidden_field :location, value: event.location %>
                     <%= f.hidden_field :start_date, value: event.start_date %>
                     <%= f.hidden_field :end_date, value: event.end_date %>
-                    <%= f.hidden_field :start_time, value: event.start_time %>
-                    <%= f.hidden_field :end_time, value: event.end_time %>
+                    <%#= f.hidden_field :start_time, value: event.start_time %>
+                    <%#= f.hidden_field :end_time, value: event.end_time %>
                     <%= f.hidden_field :price, value: event.price %>
                     <%= f.hidden_field :url, value: event.url %>
                     <%= f.hidden_field :photo, value: event.photo %>
@@ -47,6 +47,7 @@
       <% end %>
     </div>
   </div>
+  <button id="show_cards" style="display:none;">+</button>
   <div id="map" data-markers="<%= @markers.to_json %>" style="height: 100%; width: 100%"></div>
 <!--     <meta charset='utf-8' />
     <title>Create a heatmap layer</title>

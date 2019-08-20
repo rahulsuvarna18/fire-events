@@ -9,11 +9,10 @@
     <%= action_cable_meta_tag %>
     <%= favicon_link_tag asset_path('fire.ico') %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
     <%= render 'shared/flashes' %>
-    <%= render 'shared/navbar' %>
     <%= yield %>
 
     <script

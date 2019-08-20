@@ -16,8 +16,10 @@ export const googleAuthenticate = () => {
 
     // Sign the user in, and then retrieve their ID.
     auth2.signIn().then(function() {
-      console.log(auth2.currentUser.get().getId());
+      console.log(auth2.currentUser.get().getGivenName());
+      console.log(auth2.currentUser.get().getFamilyName());
+      console.log(auth2.currentUser.get().getEmail());
+      console.log(auth2.currentUser.get().getImageUrl());
     });
   });
 }
-
