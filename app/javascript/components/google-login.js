@@ -7,8 +7,8 @@
 // }
 
 export const googleAuthenticate = () => {
-  gapi.load('auth2', function() {
-    auth2 = gapi.auth2.init({
+  window.gapi.load('auth2', function() {
+    auth2 = window.gapi.auth2.init({
       client_id: '529865086294-4tkbq67f0eq1504dojum974gimd1g0fa.apps.googleusercontent.com',
       fetch_basic_profile: false,
       scope: 'profile'
