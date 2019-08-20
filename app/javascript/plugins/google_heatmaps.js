@@ -35,7 +35,8 @@ const getHeatMap = (map, markers) => {
 
 function initHeatMap() {
   const mapElement = document.getElementById('map');
-  const markers = JSON.parse(mapElement.dataset.markers);
+  if (mapElement) {
+      const markers = JSON.parse(mapElement.dataset.markers);
   const map = new google.maps.Map(document.getElementById('map'), {
     mapTypeId: 'satellite'
   });
@@ -54,6 +55,8 @@ function initHeatMap() {
 
   map.fitBounds(getBounds()); //auto-zoom
   map.panToBounds(getBounds()); //auto-center
+
+  }
  }
 
 export { initHeatMap };

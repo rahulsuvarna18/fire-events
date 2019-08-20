@@ -4,11 +4,11 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
 
-  config.omniauth :facebook, ENV["FB_ID"], ENV["FB_SECRET"],
-  scope: 'email',
-  info_fields: 'email, first_name, last_name',
-  image_size: 'square',  # 50x50, guaranteed ratio
-  secure_image_url: true
+  # config.omniauth :facebook, ENV["FB_ID"], ENV["FB_SECRET"],
+  # scope: 'email',
+  # info_fields: 'email, first_name, last_name',
+  # image_size: 'square',  # 50x50, guaranteed ratio
+  # secure_image_url: true
 
     # Add the credentials from your Google application to your secrets
   client_id = Rails.application.secrets[:google_client_id]

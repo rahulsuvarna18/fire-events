@@ -80,7 +80,8 @@ class EventsController < ApplicationController
     elsif params[:location].present?
       @events = parse_eventbrite(params[:location]) + geteventfulevents(params[:location])
     else
-      @events = Event.all
+      params[:location] = "london"
+      @events = parse_eventbrite(params[:location]) + geteventfulevents(params[:location])
     end
     return @events
   end

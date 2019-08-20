@@ -1,3 +1,4 @@
+<%= render 'shared/solid-navbar' %>
 <div class="dashboard">
   <h1>Followed events</h1>
   <% @user.favourites.each do |favourite| %>
@@ -17,7 +18,7 @@
       <%= link_to event_favourite_path(favourite.event, favourite), method: :delete, remote: true do %>
         <i class="fas fa-heart"></i>
       <% end %>
-      <a href="<%= favourite.event.url %>"><i class="fas fa-external-link-alt"></i></a>
+      <a href="<%= favourite.event.url %>" target="_blank"><i class="fas fa-external-link-alt"></i></a>
     </div>
     </div>
     <% end %>
