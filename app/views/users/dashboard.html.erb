@@ -1,6 +1,9 @@
 <div class="dashboard">
-  <h1>Followed events</h1>
-  <% @user.favourites.each do |favourite| %>
+  <h1> <strong>Followed events</strong></h1>
+  <% if @user.favourites.empty? %>
+    <h5 id="empty-dashboard"><strong>Add favourites to follow the upcoming events</strong></h5>
+  <% else %>
+    <% @user.favourites.each do |favourite| %>
     <div class="favourite-dashboard" id="favourite_<%= favourite.id %>">
       <div class="dashboard-photo">
         <div class="dashaboard-img">
@@ -8,17 +11,21 @@
         </div>
       </div>
       <div class="dashboard-text">
-        <h5 id="favourite-name" class="inside-cards-dashboard"> <strong> <%= favourite.event.name %></strong></h5>
+        <h5 id="favourite-name" class="inside-cards-dashboard"> <strong><%= favourite.event.name %></strong></h5>
         <p id ="favourite-date" class="inside-cards-dashboard"><strong><%= favourite.event.location %></strong></p>
         <p id="favourite-start-date" class="inside-cards-dashboard"><%= favourite.event.start_date.strftime("%A, %e, %B") %></p>
-        <p id= "favourite-price" class="inside-cards-dashboard"><%= favourite.event.price %>€</p>
-      </div>
+        <% if favourite.event.price == nil%>
+          <% else %>
+          <p id= "favourite-price" class="inside-cards-dashboard"><%= favourite.event.price %>€</p>
+          <% end %>
+    </div>
     <div class="dasboard-heart-link">
       <%= link_to event_favourite_path(favourite.event, favourite), method: :delete, remote: true do %>
-        <i class="fas fa-heart"></i>
-      <% end %>
+        <i class="far fa-heart"></i>
+  <% end %>
       <a href="<%= favourite.event.url %>"><i class="fas fa-external-link-alt"></i></a>
     </div>
-    </div>
+  </div>
     <% end %>
+  <% end %>
 </div>
