@@ -182,3 +182,10 @@ export { initMapbox };
 
 
 
+
+
+
+    const contentString = '<p>Hello dawg!!!</p>'
+    var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });

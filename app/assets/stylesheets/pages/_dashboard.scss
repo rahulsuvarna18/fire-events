@@ -1,21 +1,32 @@
 .dashboard {
 font-family: Helvetica;
+min-height: 550px;
+background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+font-family: sans-serif;
+padding-bottom: 30px;
+color:rgb(53, 56, 57);
 }
 
 .dashboard h1 {
-  margin-top: 50px;
+  padding-top: 50px;
   margin-left: 50px;
-  margin-bottom: 50px
+  margin-bottom: 50px;
+}
+
+#empty-dashboard {
+  text-align: center;
+  margin-top: 200px;
 }
 
 .favourite-dashboard {
   margin: 20px 20px 20px 20px;
-  width: 900px;
+  width: 700px;
   padding: 10px;
   display: flex;
   align-items: flex-center;
   position: relative;
   background-color: white;
+  opacity: 0.7;
 }
 
 .favourite-dashboard:hover {
