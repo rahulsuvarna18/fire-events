@@ -27,8 +27,11 @@ const getMarkersMap = (map, markers) => {
       const infowindow = new google.maps.InfoWindow({
           content: marker.infoWindow
       });
-      mark.addListener('click', function() {
+      mark.addListener('mouseover', function() {
         infowindow.open(map, mark);
+      });
+      mark.addListener('mouseout', function() {
+        infowindow.close(map, mark);
       });
       markers_array.push(mark)
     })
