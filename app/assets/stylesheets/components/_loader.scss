@@ -1,53 +1,65 @@
-#loader-page {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: #141414;;
+$color: #fd7000;
+$size: 12px;
+$time: 1;
+
+.loader {
+  transition: all 1s ease;
 }
 
-.loader-name {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: {
-    top: -10px;
-    left: -52px;
-  }
-  font-size: 125%;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #fefefe;
+main {
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background:  #090707;
+   transition: 1s ease-in-out;
 }
 
-.loader-circle {
-  width: 180px;
-  height: 180px;
-  box-sizing: border-box;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  border: {
-    top: 5px solid #fefefe;
-    bottom: 2px solid transparent;
-    left: 2px solid transparent;
-    right: 2px solid transparent;
-    radius: 50%;
+  .test {
+    color: white;
   }
-  margin: {
-    top: -90px;
-    left: -90px;
-  }
-  animation: loader 1s infinite linear;
+
+.dank-ass-loader {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   transition: 1s ease-in-out;
+
+   .row {
+      display: flex;
+   }
 }
 
-@keyframes loader {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.arrow {
+   width: 0;
+   height: 0;
+   margin: 0 (-$size / 2);
+   border-left: $size solid transparent;
+   border-right: $size solid transparent;
+   border-bottom: ($size * 1.8) solid $color;
+   animation: blink $time + s infinite;
+   filter: drop-shadow(0 0 ($size * 1.5) $color);
+
+   &.down {
+      transform: rotate(180deg);
+   }
+
+   @for $i from 1 through 18 {
+      &.outer-#{$i} {
+         animation-delay: -($time / 18) * $i + s;
+      }
+   }
+
+   @for $i from 1 through 6 {
+      &.inner-#{$i} {
+         animation-delay: -($time / 6) * $i + s;
+      }
+   }
+}
+
+@keyframes blink {
+  0% { opacity: 0.1; }
+  30% { opacity: 1; }
+  100% { opacity: 0.1; }
 }
