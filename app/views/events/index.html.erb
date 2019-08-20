@@ -28,9 +28,16 @@
                     <%= f.hidden_field :photo, value: event.photo %>
                     <%= f.hidden_field :category, value: event.category %>
                     <%= f.hidden_field :description, value: event.description %>
-                    <button type="submit" id="<%= event.name %>">
-                      <i class="far fa-heart"></i>
-                    </button>
+                    <% event_name = event.name.gsub(/\s+/, '') %>
+                    <% if current_user.favourites.find_by(event_name: event.name) %>
+                      <%= link_to event_favourite_path(Event.find_by(name: event.name), current_user.favourites.find_by(event_name: event.name)), method: :delete, remote: true do %>
+                        <i class="fas fa-heart"></i>
+                      <% end %>
+                    <% else %>
+                      <button type="submit" id="<%= event_name %>">
+                        <i class="far fa-heart"></i>
+                      </button>
+                    <% end %>
                   <% end %>
                 </ul>
               </div>

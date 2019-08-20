@@ -1,1 +1,2 @@
-document.getElementById("<%= @event.name %>").innerHTML = '<i class="fas fa-heart"></i>';
+document.getElementById("<%= @event.name.gsub(/\s+/, '') %>").innerHTML = '<%= link_to event_favourite_path(@event, @favourite), method: :delete, remote: true do %><i class="fas fa-heart"></i><% end %>';
+
