@@ -7,6 +7,13 @@ padding-bottom: 30px;
 color:rgb(53, 56, 57);
 }
 
+.dashboard-nav {
+  display: flex;
+  justify-content: space-around;
+  height: 20px;
+}
+
+
 .dashboard h1 {
   padding-top: 50px;
   margin-left: 50px;

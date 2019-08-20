@@ -1,6 +1,9 @@
 <%= render 'shared/solid-navbar' %>
 <div class="dashboard">
+  <div class="dashboard-nav">
   <h1> <strong>Followed events</strong></h1>
+  <h1 class="home-button"><%= link_to "Home" , root_path, class: "btn btn-primary" %></h1>
+  </div>
   <% if @user.favourites.empty? %>
     <h5 id="empty-dashboard"><strong>Add favourites to follow the upcoming events</strong></h5>
   <% else %>
