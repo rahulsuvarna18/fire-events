@@ -6,7 +6,7 @@
     <%= render "shared/carousel" %>
 </div>
 
-<div class="loader" style="display: none;">
+<div class="loader" style="visibility: hidden">
   <%= render "shared/loader" %>
 </div>
 
@@ -18,7 +18,7 @@
 
   search.addEventListener("click", () => {
     content.style.display = "none"
-    loader.style.display = "block"
+    loader.style.visibility = "visible"
   })
 </script>
 
