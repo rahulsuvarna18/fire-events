@@ -8,8 +8,6 @@ class UsersController < ApplicationController
       @events << fav.event
     end
 
-
-
     @markers = @events.map do |event|
       {
         lat: event.latitude,
