@@ -1,12 +1,15 @@
 <div class="home-content">
   <%= render 'shared/navbar' %>
   <div class="home-search">
+    <div class="logo">
+      <%= render "shared/logo" %>
+    </div>
     <%= render "shared/search" %>
   </div>
     <%= render "shared/carousel" %>
 </div>
 
-<div class="loader" style="visibility: hidden">
+<div class="loader" style="display: none">
   <%= render "shared/loader" %>
 </div>
 
@@ -18,7 +21,7 @@
 
   search.addEventListener("click", () => {
     content.style.display = "none"
-    loader.style.visibility = "visible"
+    loader.style.display = "block"
   })
 </script>
 
