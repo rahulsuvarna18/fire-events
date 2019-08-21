@@ -297,13 +297,11 @@ function initHeatMap() {
       });
 
       card.addEventListener('mouseover', function(e) {
-        console.log(e)
         map.setCenter(latlng);
         map.setZoom(12);
         focusMark.setVisible(true);
       });
       card.addEventListener('mouseleave', function(e) {
-        console.log(e)
         map.fitBounds(getBounds()); //auto-zoom
         map.panToBounds(getBounds()); //auto-center
         focusMark.setVisible(false);

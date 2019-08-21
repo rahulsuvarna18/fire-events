@@ -42,28 +42,69 @@
 
 .btn-fire {
   color: white;
-  padding: 8px 24px;
-  border-radius: 4px;
+  padding: 7px 24px;
+  border-radius: 10px;
   background: #EE6631;
+  // background: linear-gradient(#EE6631, #0F60C4);
   transition: background 0.3s ease;
+
 }
 
 .btn-fire:hover {
   background: #cd4545;
   color: white;
+  text-decoration: bold;
+  border-color: white;
 }
 
 .btn-charcoal {
   color: white;
-  padding: 8px 24px;
-  border-radius: 4px;
-  background: #EE6631;
+  padding: 7px 24px;
+  border-radius: 10px;
+  // background: linear-gradient(#6c757d, #0F60C4);
+  background: #6c757d;
   transition: background 0.3s ease;
 }
 
 .btn-charcoal:hover {
-  background: #grey;
+  background: #6c757d;
   color: white;
+  text-decoration: bold;
+  border-color: #EE6631;
+}
+
+
+.btn-yellow {
+  color: white;
+  padding: 7px 24px;
+  border-radius: 10px;
+  // background: linear-gradient(#6c757d, #0F60C4);
+  background: #F4BF31;
+  transition: background 0.3s ease;
+}
+
+.btn-yellow:hover {
+  background: #F4BF31;
+  color: white;
+  text-decoration: bold;
+  border-color: #EE6631;
+}
+
+
+.btn-red {
+  color: white;
+  padding: 7px 24px;
+  border-radius: 10px;
+  // background: linear-gradient(#6c757d, #0F60C4);
+  background: #ce2029;
+  transition: background 0.3s ease;
+}
+
+.btn-red:hover {
+  background: #ce2029;
+  color: white;
+  text-decoration: bold;
+  border-color: #EE6631;
 }
 
 
