@@ -6,7 +6,8 @@ ul{
 .flip-card {
   background-color: transparent;
   height: 175px;
-  border: 1px solid #f1f1f1;
+  // border: 1px solid #f1f1f1;
+  // border-radius: 15px;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
   text-align:center;
   margin: 10px;
@@ -37,14 +38,14 @@ ul{
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: white;
-  color: black;
+  background-color: #212121;
+  color: white;
 }
 
 /* Style the back side */
 .flip-card-back {
-  background-color: white;
-  color: black;
+  background-color: #212121;
+  color: white;
   transform: rotateY(180deg);
   border-radius: 5px;
 }
