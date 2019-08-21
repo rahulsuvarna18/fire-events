@@ -8,7 +8,7 @@
     <div class="scroller" style="overflow-y:scroll; height:70vh;">
 
       <% @user.favourites.each do |favourite| %>
-        <div class="favourite-dashboard" lat="<%=event.latitude %>" lng="<%=event.longitude%>">
+        <div class="favourite-dashboard" lat="<%=favourite.event.latitude %>" lng="<%=favourite.event.longitude%>">
           <div class="dashboard-photo">
             <div class="dashaboard-img">
               <a href="<%= favourite.event.url %>" target="_blank"><%= image_tag favourite.event.photo, alt: "alttext" %></a>

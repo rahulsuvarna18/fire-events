@@ -313,6 +313,33 @@ function initHeatMap() {
       });
     };
 
+    const favouriteDashboard = document.querySelectorAll('.favourite-dashboard');
+
+    if (favouriteDashboard) {
+      favouriteDashboard.forEach((card) => {
+        const latitude = card.attributes[2].value
+        const longitude = card.attributes[3].value
+        var latlng = new google.maps.LatLng(latitude, longitude);
+        const focusMark = new google.maps.Marker({
+          position: latlng,
+          map: map,
+          icon: "https://res.cloudinary.com/dyigdenkz/image/upload/v1566361464/rsz_fire_1f525_ubebut.png",
+          visible: false,
+        });
+
+        card.addEventListener('mouseover', function(e) {
+          map.setCenter(latlng);
+          map.setZoom(12);
+          focusMark.setVisible(true);
+        });
+        card.addEventListener('mouseleave', function(e) {
+          map.fitBounds(getBounds()); //auto-zoom
+          map.panToBounds(getBounds()); //auto-center
+          focusMark.setVisible(false);
+        });
+      });
+    };
+
 
 
 
