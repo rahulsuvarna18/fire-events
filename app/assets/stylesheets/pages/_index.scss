@@ -19,9 +19,27 @@ table{
 
 #scrollingTable {
   height:89vh;
+  background-color: #212121;
 }
 
 .center-container{
   padding:0px;
   margin:0px;
+  border-color: #212121;
+}
+
+#hide_cards{
+  color: white;
+  background-color: #212121;
+  border-color: #212121;
+}
+
+#show_cards{
+  color: white;
+  background-color: #212121;
+  border-color: #212121;
+}
+
+#toggle_markers_hide{
+  display:none;
 }
