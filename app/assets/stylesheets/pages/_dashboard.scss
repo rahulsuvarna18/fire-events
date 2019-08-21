@@ -1,7 +1,8 @@
 .dashboard {
 font-family: Helvetica;
-min-height: 609px;
-background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+min-height: 100vh;
+min-width: 100%;
+background-image: linear-gradient(to bottom, #191717, #161414, #121010, #0e0c0c, #080707, #080707, #080707, #080707, #0e0c0c, #121010, #161414, #191717);
 font-family: sans-serif;
 padding-bottom: 30px;
 color:rgb(53, 56, 57);
@@ -17,12 +18,16 @@ color:rgb(53, 56, 57);
 .dashboard h1 {
   padding-top: 50px;
   margin-left: 50px;
-  margin-bottom: 50px;
+  padding-bottom: 50px;
+  color: white;
+  opacity: 0.8;
 }
 
 #empty-dashboard {
   text-align: center;
   margin-top: 200px;
+  color: white;
+  opacity: 0.8;
 }
 
 .favourite-dashboard {
@@ -32,23 +37,21 @@ color:rgb(53, 56, 57);
   display: flex;
   align-items: flex-center;
   position: relative;
-  background-color: white;
-  opacity: 0.7;
-}
-
-.favourite-dashboard:hover {
-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.16);
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
 }
 
 .dashboard-photo {
-  width: 200px;
+  width: 300px;
   object-fit: contain;
+  margin-right: 10px;
 }
 
+
 .dashboard img{
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
+  width: 300px;
+  height: 175px;
+  object-fit: fill;
 }
 
 .dashboard-text {
@@ -81,24 +84,16 @@ box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.16);
 .fa-heart {
   bottom: 0;
   right: 0;
-  color: red;
+  color: white;
   padding: 8px;
-}
-
-.fa-heart:hover {
-  color:red;
-  background-color: rgb(248, 247, 250);
-  border-radius: 50%;
 }
 
 .fa-external-link-alt {
   padding: 8px;
+  color: white;
 }
 
-.fa-external-link-alt:hover {
-  background-color: rgb(248, 247, 250);
-  border-radius: 50%;
-}
+
 
 #favourite-date {
   margin-bottom: 5px;
