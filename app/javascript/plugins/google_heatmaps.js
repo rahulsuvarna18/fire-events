@@ -248,7 +248,13 @@ function initHeatMap() {
   if (mapElement) {
     const markers = JSON.parse(mapElement.dataset.markers);
     const map = new google.maps.Map(document.getElementById('map'), {
-      mapTypeId: ['satellite', 'styled_map']
+      mapTypeId: ['styled_map'],
+      zoomControl: true,
+      mapTypeControl: false,
+      scaleControl: true,
+      streetViewControl: true,
+      rotateControl: true,
+      fullscreenControl: true
     });
 
     //Associate the styled map with the MapTypeId and set it to display.
@@ -259,13 +265,13 @@ function initHeatMap() {
     const marker_list = getMarkersMap(map, markers);
 
     const markersToggleShow = document.getElementById('toggle_markers_show');
+    const markersToggleHide = document.getElementById('toggle_markers_hide');
+
+    $(document).ready(function() {
+      $("#toggle_markers_hide").hide();
+    });
+
     if (markersToggleShow) {
-      const markersToggleHide = document.getElementById('toggle_markers_hide');
-
-      $(document).ready(function() {
-        markersToggleShow.hide();
-      });
-
       markersToggleShow.addEventListener('click', function() {
         heatmap.setMap(heatmap.getMap() ? null : map);
       marker_list.forEach((m) => {
@@ -292,6 +298,33 @@ function initHeatMap() {
       flipCard.forEach((card) => {
         const latitude = card.querySelector('.card-category').attributes[2].value
         const longitude = card.querySelector('.card-category').attributes[3].value
+        var latlng = new google.maps.LatLng(latitude, longitude);
+        const focusMark = new google.maps.Marker({
+          position: latlng,
+          map: map,
+          icon: "https://res.cloudinary.com/dyigdenkz/image/upload/v1566361464/rsz_fire_1f525_ubebut.png",
+          visible: false,
+        });
+
+        card.addEventListener('mouseover', function(e) {
+          map.setCenter(latlng);
+          map.setZoom(12);
+          focusMark.setVisible(true);
+        });
+        card.addEventListener('mouseleave', function(e) {
+          map.fitBounds(getBounds()); //auto-zoom
+          map.panToBounds(getBounds()); //auto-center
+          focusMark.setVisible(false);
+        });
+      });
+    };
+
+    const favouriteDashboard = document.querySelectorAll('.favourite-dashboard');
+
+    if (favouriteDashboard) {
+      favouriteDashboard.forEach((card) => {
+        var latitude = card.attributes[1].value //the issue here is that it is not picking up the latitude or longitude frmo the event object (in ruby)
+        var longitude = card.attributes[2].value
         var latlng = new google.maps.LatLng(latitude, longitude);
         const focusMark = new google.maps.Marker({
           position: latlng,
