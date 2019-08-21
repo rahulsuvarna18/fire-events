@@ -289,16 +289,17 @@ function initHeatMap() {
       const latitude = card["attributes"][2].value
       const longitude = card["attributes"][3].value
       var latlng = new google.maps.LatLng(latitude, longitude);
+      const focusMark = new google.maps.Marker({
+        position: latlng,
+        map: map,
+        icon: "https://res.cloudinary.com/dyigdenkz/image/upload/v1566361464/rsz_fire_1f525_ubebut.png",
+        visible: false,
+      });
 
       card.addEventListener('mouseover', function() {
-        const focusMark = new google.maps.Marker({
-          position: latlng,
-          map: map,
-          icon: "https://res.cloudinary.com/dyigdenkz/image/upload/v1566361464/rsz_fire_1f525_ubebut.png",
-          visible: true,
-        });
         map.setCenter(latlng);
         map.setZoom(12);
+        focusMark.setVisible(true);
       });
       card.addEventListener('mouseout', function() {
         map.fitBounds(getBounds()); //auto-zoom
