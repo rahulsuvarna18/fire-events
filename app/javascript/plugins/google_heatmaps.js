@@ -258,55 +258,63 @@ function initHeatMap() {
     const heatmap = getHeatMap(map, markers)
     const marker_list = getMarkersMap(map, markers);
 
-    $(document).ready(function() {
-      $("#toggle_markers_hide").hide();
-    });
-
     const markersToggleShow = document.getElementById('toggle_markers_show');
-    const markersToggleHide = document.getElementById('toggle_markers_hide');
+    if (markersToggleShow) {
+      const markersToggleHide = document.getElementById('toggle_markers_hide');
 
-    markersToggleShow.addEventListener('click', function() {
-      heatmap.setMap(heatmap.getMap() ? null : map);
-    marker_list.forEach((m) => {
-        m.setVisible(true);
-       })
-    $("#toggle_markers_hide").show();
-    $("#toggle_markers_show").hide();
-    });
+      $(document).ready(function() {
+        markersToggleShow.hide();
+      });
 
-    markersToggleHide.addEventListener('click', function() {
-      heatmap.setMap(heatmap.getMap() ? null : map);
-    marker_list.forEach((m) => {
-        m.setVisible(false);
-       })
-    $("#toggle_markers_hide").hide();
-    $("#toggle_markers_show").show();
-    });
+      markersToggleShow.addEventListener('click', function() {
+        heatmap.setMap(heatmap.getMap() ? null : map);
+      marker_list.forEach((m) => {
+          m.setVisible(true);
+         })
+      $("#toggle_markers_hide").show();
+      $("#toggle_markers_show").hide();
+      });
+
+      markersToggleHide.addEventListener('click', function() {
+        heatmap.setMap(heatmap.getMap() ? null : map);
+      marker_list.forEach((m) => {
+          m.setVisible(false);
+         })
+      $("#toggle_markers_hide").hide();
+      $("#toggle_markers_show").show();
+      });
+
+    };
 
     const flipCard = document.querySelectorAll('.flip-card');
-    flipCard.forEach((card) => {
-      const latitude = card.querySelector('.card-category').attributes[2].value
-      const longitude = card.querySelector('.card-category').attributes[3].value
-      var latlng = new google.maps.LatLng(latitude, longitude);
-      const focusMark = new google.maps.Marker({
-        position: latlng,
-        map: map,
-        icon: "https://res.cloudinary.com/dyigdenkz/image/upload/v1566361464/rsz_fire_1f525_ubebut.png",
-        visible: false,
-      });
 
-      card.addEventListener('mouseover', function(e) {
-        map.setCenter(latlng);
-        map.setZoom(12);
-        focusMark.setVisible(true);
-      });
-      card.addEventListener('mouseleave', function(e) {
-        map.fitBounds(getBounds()); //auto-zoom
-        map.panToBounds(getBounds()); //auto-center
-        focusMark.setVisible(false);
-      });
+    if (flipCard) {
+      flipCard.forEach((card) => {
+        const latitude = card.querySelector('.card-category').attributes[2].value
+        const longitude = card.querySelector('.card-category').attributes[3].value
+        var latlng = new google.maps.LatLng(latitude, longitude);
+        const focusMark = new google.maps.Marker({
+          position: latlng,
+          map: map,
+          icon: "https://res.cloudinary.com/dyigdenkz/image/upload/v1566361464/rsz_fire_1f525_ubebut.png",
+          visible: false,
+        });
 
-    });
+        card.addEventListener('mouseover', function(e) {
+          map.setCenter(latlng);
+          map.setZoom(12);
+          focusMark.setVisible(true);
+        });
+        card.addEventListener('mouseleave', function(e) {
+          map.fitBounds(getBounds()); //auto-zoom
+          map.panToBounds(getBounds()); //auto-center
+          focusMark.setVisible(false);
+        });
+      });
+    };
+
+
+
 
     map.fitBounds(getBounds()); //auto-zoom
     map.panToBounds(getBounds()); //auto-center

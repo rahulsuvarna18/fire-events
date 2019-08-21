@@ -1,12 +1,14 @@
 <%= render 'shared/solid-navbar' %>
-<div class="dashboard">
-  <div class="without-map" id="scrolling-dashboard" style="overflow-y:scroll">
-    <h1 id="dashboard-title"> <strong>Followed events</strong></h1>
+<div class="dashboard" style="height:89vh;">
+  <div class="without-map" id="scrolling-dashboard">
+    <h1 id="dashboard-title" style="padding: 15px;"> <strong>Followed events</strong></h1>
     <% if @user.favourites.empty? %>
       <h5 id="empty-dashboard"><strong>Add favourites to follow the upcoming events</strong></h5>
     <% else %>
+    <div class="scroller" style="overflow-y:scroll; height:70vh;">
+
       <% @user.favourites.each do |favourite| %>
-        <div class="favourite-dashboard" >
+        <div class="favourite-dashboard" lat="<%=event.latitude %>" lng="<%=event.longitude%>">
           <div class="dashboard-photo">
             <div class="dashaboard-img">
               <a href="<%= favourite.event.url %>" target="_blank"><%= image_tag favourite.event.photo, alt: "alttext" %></a>
@@ -30,12 +32,15 @@
       </div>
         <% end %>
       <% end %>
-  </div>
-  <div id="map" data-markers="<%= @markers.to_json %>" style="height: 500px; width: 600px; margin-top: 180px; margin-left: 50px; margin-right: 30px"></div>
-    <div id="map-dashboard">
-        <meta charset='utf-8' />
+
     </div>
+
   </div>
-</div>
+  <div id="map" data-markers="<%= @markers.to_json %>" style="height: 65vh; width: 600px; margin-top: 120px; margin-left: 50px; margin-right: 30px"></div>
+<!--     <div id="map-dashboard">
+        <meta charset='utf-8' />
+    </div> -->
+<!--   </div>
+ --></div>
 
 
