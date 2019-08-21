@@ -75,34 +75,34 @@
 
 
 .btn-yellow {
-  color: white;
+  color: #F4BF31;
   padding: 7px 24px;
   border-radius: 10px;
   // background: linear-gradient(#6c757d, #0F60C4);
-  background: #F4BF31;
+  background: #36454f;
   transition: background 0.3s ease;
 }
 
 .btn-yellow:hover {
-  background: #F4BF31;
-  color: white;
+  background: #36454f;
+  color: #F4BF31;
   text-decoration: bold;
   border-color: #EE6631;
 }
 
 
 .btn-red {
-  color: white;
+  color: #ce2029;
   padding: 7px 24px;
   border-radius: 10px;
   // background: linear-gradient(#6c757d, #0F60C4);
-  background: #ce2029;
+  background: #36454f;
   transition: background 0.3s ease;
 }
 
 .btn-red:hover {
-  background: #ce2029;
-  color: white;
+  background: #36454f;
+  color: #ce2029;
   text-decoration: bold;
   border-color: #EE6631;
 }
