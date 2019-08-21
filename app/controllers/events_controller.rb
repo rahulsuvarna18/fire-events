@@ -40,7 +40,6 @@ class EventsController < ApplicationController
 
   def index
     @events = parse_using_params.uniq{|x| x.name}
-
       @markers = @events.map do |event|
         {
           lat: event.latitude,
@@ -70,7 +69,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :location, :start_date, :end_date, :start_time, :end_time, :price, :url, :photo, :category, :description)
+    params.require(:event).permit(:name, :location, :start_date, :end_date, :start_time, :end_time, :price, :url, :photo, :category, :description, :latitude, :longitude)
   end
 
   def parse_using_params
