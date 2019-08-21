@@ -6,7 +6,7 @@ const typed = () => {
  //   typeSpeed: 100
  // });
  const typedSubtitle = new Typed('#typed', {
-   strings: ["Finding the best events for you", "Setting up the heatmap", "Compiling the results", "Gathering location information"]
+   strings: ["Finding the best events for you", "Setting up the heatmap", "Compiling the results", "Gathering location information"],
    typeSpeed: 50,
    showCursor: false,
    loop: true
