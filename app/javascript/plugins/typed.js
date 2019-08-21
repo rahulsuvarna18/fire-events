@@ -8,6 +8,7 @@ const typed = () => {
    showCursor: false,
    loop: true
  });
+  console.log("heloooo")
 }
 
 export { typed };
