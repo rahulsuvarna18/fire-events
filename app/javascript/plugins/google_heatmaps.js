@@ -283,9 +283,8 @@ function initHeatMap() {
     $("#toggle_markers_show").show();
     });
 
-    const cardcat = document.querySelectorAll('.flip-card');
-    cardcat.forEach((card) => {
-      console.log(card)
+    const flipCard = document.querySelectorAll('.flip-card');
+    flipCard.forEach((card) => {
       const latitude = card.querySelector('.card-category').attributes[2].value
       const longitude = card.querySelector('.card-category').attributes[3].value
       var latlng = new google.maps.LatLng(latitude, longitude);
