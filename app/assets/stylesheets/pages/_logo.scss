@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #131313;
+}
+
+.logo {
+  z-index: 9;
+}
+
+.specialtext {
+  position: absolute;
+  left: 50%;
+  top: -150px;
+
+  transform: translate(-50%, -50%);
+}
+
+#text {
+  font-size: 150px;
+  font-family: Righteous;
+}
+
+#fill {
+  animation: shift 5s linear infinite;
+}
+
+@keyframes shift {
+  0% { x: 0; }
+  100% { x: -2000; }
+}
