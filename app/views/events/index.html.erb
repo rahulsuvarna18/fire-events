@@ -1,4 +1,11 @@
+<div class="loader" style="display: none">
+  <%= render "shared/loader" %>
+</div>
+
+<div class="main-container">
+<div class="mapbar-div">
 <%= render "shared/mapbar" %>
+</div>
 <div class="center-container d-flex" style="height:89vh;">
   <button id="hide_cards">-</button>
   <div class="col-3" id="cards" style="padding-left: 0px; padding-right: 0px;">
@@ -24,6 +31,8 @@
                     <%#= f.hidden_field :start_time, value: event.start_time %>
                     <%#= f.hidden_field :end_time, value: event.end_time %>
                     <%= f.hidden_field :price, value: event.price %>
+                    <%= f.hidden_field :latitude, value: event.latitude %>
+                    <%= f.hidden_field :longitude, value: event.longitude %>
                     <%= f.hidden_field :url, value: event.url %>
                     <%= f.hidden_field :photo, value: event.photo %>
                     <%= f.hidden_field :category, value: event.category %>
@@ -48,6 +57,7 @@
     </div>
   </div>
   <button id="show_cards" style="display:none;">+</button>
+
   <div id="map" data-markers="<%= @markers.to_json %>" style="height: 100%; width: 100%"></div>
   <div class="buttons" style="position: absolute; left: 561px; top: 94px;">
     <button id="toggle_markers_show" style="display:none; direction: ltr; overflow: hidden; text-align: center; height: 40px; display: table-cell; vertical-align: middle; position: relative; color: rgb(86, 86, 86); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 18px; background-color: rgb(255, 255, 255); padding: 0px 17px; border-bottom-left-radius: 2px; border-top-left-radius: 2px; background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; min-width: 36px;">Toggle Markers</button>
@@ -59,8 +69,20 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet' /> -->
 </div>
+</div>
 
 
+
+<script>
+  const search = document.querySelector("#home-search")
+  const loader = document.querySelector(".loader")
+  const content = document.querySelector(".main-container")
+
+  search.addEventListener("click", () => {
+    content.style.display = "none"
+    loader.style.display = "block"
+  })
+</script>
 
 
 
