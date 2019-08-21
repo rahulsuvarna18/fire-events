@@ -248,7 +248,13 @@ function initHeatMap() {
   if (mapElement) {
     const markers = JSON.parse(mapElement.dataset.markers);
     const map = new google.maps.Map(document.getElementById('map'), {
-      mapTypeId: ['satellite', 'styled_map']
+      mapTypeId: ['styled_map'],
+      zoomControl: true,
+      mapTypeControl: false,
+      scaleControl: true,
+      streetViewControl: true,
+      rotateControl: true,
+      fullscreenControl: true
     });
 
     //Associate the styled map with the MapTypeId and set it to display.
@@ -259,13 +265,13 @@ function initHeatMap() {
     const marker_list = getMarkersMap(map, markers);
 
     const markersToggleShow = document.getElementById('toggle_markers_show');
+    const markersToggleHide = document.getElementById('toggle_markers_hide');
+
+    $(document).ready(function() {
+      $("#toggle_markers_hide").hide();
+    });
+
     if (markersToggleShow) {
-      const markersToggleHide = document.getElementById('toggle_markers_hide');
-
-      $(document).ready(function() {
-        markersToggleShow.hide();
-      });
-
       markersToggleShow.addEventListener('click', function() {
         heatmap.setMap(heatmap.getMap() ? null : map);
       marker_list.forEach((m) => {
@@ -317,8 +323,8 @@ function initHeatMap() {
 
     if (favouriteDashboard) {
       favouriteDashboard.forEach((card) => {
-        const latitude = card.attributes[2].value
-        const longitude = card.attributes[3].value
+        var latitude = card.attributes[1].value //the issue here is that it is not picking up the latitude or longitude frmo the event object (in ruby)
+        var longitude = card.attributes[2].value
         var latlng = new google.maps.LatLng(latitude, longitude);
         const focusMark = new google.maps.Marker({
           position: latlng,
