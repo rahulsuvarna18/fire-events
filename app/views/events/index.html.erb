@@ -1,4 +1,11 @@
+<div class="loader" style="display: none">
+  <%= render "shared/loader" %>
+</div>
+
+<div class="main-container">
+<div class="mapbar-div">
 <%= render "shared/mapbar" %>
+</div>
 <div class="center-container d-flex" style="height:89vh;">
   <button id="hide_cards">-</button>
   <div class="col-3" id="cards" style="padding-left: 0px; padding-right: 9px;">
@@ -55,8 +62,20 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet' /> -->
 </div>
+</div>
 
 
+
+<script>
+  const search = document.querySelector("#home-search")
+  const loader = document.querySelector(".loader")
+  const content = document.querySelector(".main-container")
+
+  search.addEventListener("click", () => {
+    content.style.display = "none"
+    loader.style.display = "block"
+  })
+</script>
 
 
 
