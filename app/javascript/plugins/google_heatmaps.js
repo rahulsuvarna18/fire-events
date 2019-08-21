@@ -49,7 +49,7 @@ const getHeatMap = (map, markers) => {
   data: getPoints(markers),
   map: map
 });
- heatmap.set('radius', 15);
+ heatmap.set('radius', 20);
  return heatmap
 }
 
@@ -283,11 +283,11 @@ function initHeatMap() {
     $("#toggle_markers_show").show();
     });
 
-    const cardcat = document.querySelectorAll('.card-category');
-    console.log(cardcat);
+    const cardcat = document.querySelectorAll('.flip-card');
     cardcat.forEach((card) => {
-      const latitude = card["attributes"][2].value
-      const longitude = card["attributes"][3].value
+      console.log(card)
+      const latitude = card.querySelector('.card-category').attributes[2].value
+      const longitude = card.querySelector('.card-category').attributes[3].value
       var latlng = new google.maps.LatLng(latitude, longitude);
       const focusMark = new google.maps.Marker({
         position: latlng,
@@ -296,16 +296,19 @@ function initHeatMap() {
         visible: false,
       });
 
-      card.addEventListener('mouseover', function() {
+      card.addEventListener('mouseover', function(e) {
+        console.log(e)
         map.setCenter(latlng);
         map.setZoom(12);
         focusMark.setVisible(true);
       });
-      card.addEventListener('mouseout', function() {
+      card.addEventListener('mouseleave', function(e) {
+        console.log(e)
         map.fitBounds(getBounds()); //auto-zoom
         map.panToBounds(getBounds()); //auto-center
         focusMark.setVisible(false);
       });
+
     });
 
     map.fitBounds(getBounds()); //auto-zoom
