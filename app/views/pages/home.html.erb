@@ -9,4 +9,17 @@
     <%= render "shared/carousel" %>
 </div>
 
+<div class="loader" style="display: none">
+  <%= render "shared/loader" %>
+</div>
 
+
+<script>
+  const search = document.querySelector("#home-search")
+  const loader = document.querySelector(".loader")
+  const content = document.querySelector(".home-content")
+  search.addEventListener("click", () => {
+    content.style.display = "none"
+    loader.style.display = "block"
+  })
+</script>
