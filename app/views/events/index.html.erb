@@ -21,7 +21,7 @@
               <div class="flip-card-back">
                 <ul style="list-style-type:none; padding-top: 10px;">
                   <p><strong><%= event.name %></strong></p>
-                  <p><%= event.start_date %> - <%= event.end_date %></p>
+                  <p><%= event.start_date.strftime("%A, %e, %B") %> - <%= event.end_date.strftime("%A, %e, %B") %></p>
                   <p><%= event.location %></p>
                   <%= simple_form_for @event, remote: true do |f| %>
                     <%= f.hidden_field :name, value: event.name %>
@@ -40,11 +40,11 @@
                     <% event_name = event.name.gsub(/\s+/, '') %>
                     <% if current_user.favourites.find_by(event_name: event.name) %>
                       <%= link_to event_favourite_path(Event.find_by(name: event.name), current_user.favourites.find_by(event_name: event.name)), method: :delete, remote: true do %>
-                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-heart" id="heart-event-fas" style="font-size:20px; background: rgba(0,0,0,0);"></i>
                       <% end %>
                     <% else %>
-                      <button type="submit" id="<%= event_name %>">
-                        <i class="far fa-heart" style="color:red"></i>
+                      <button type="submit" id="<%= event_name %>" style="background: rgba(0,0,0,0); border:none;">
+                        <i class="far fa-heart" style="color:red; font-size:20px; background: rgba(0,0,0,0);"></i>
                       </button>
                     <% end %>
                   <% end %>
