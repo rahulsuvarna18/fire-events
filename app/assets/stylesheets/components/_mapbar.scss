@@ -12,6 +12,22 @@
   width:200px;
 }
 
+.dropdown-item {
+  font: sans-serif;
+  color: rgb(238, 102, 48);
+  background-color: rgb(54, 69, 79);
+}
+
+.dropdown-item:hover {
+  font: sans-serif;
+  color:rgb(238, 102, 48);
+  background-color: rgb(54, 69, 79);
+}
+
+.dropdown-menu.show {
+  background-color: rgb(54, 69, 79);
+}
+
 
 .popup-link-map{
   color: black;
