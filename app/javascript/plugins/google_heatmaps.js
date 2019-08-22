@@ -17,6 +17,7 @@ const getBounds = () => {
 
 const getMarkersMap = (map, markers) => {
   let markers_array = []
+  let info_window_array = []
   if (markers) {
     markers.forEach((marker) => {
       const mark = new google.maps.Marker({
@@ -25,15 +26,34 @@ const getMarkersMap = (map, markers) => {
         icon: "https://res.cloudinary.com/dyigdenkz/image/upload/v1566361464/rsz_fire_1f525_ubebut.png",
         visible: false,
       });
+
       const infowindow = new google.maps.InfoWindow({
           content: marker.infoWindow
       });
+
+      info_window_array.push(infowindow)
       // mark.addListener('mouseover', function() {
       //   infowindow.open(map, mark);
       // });
       mark.addListener('click', function() {
+        info_window_array.forEach((info) => {
+          info.close()
+        })
+        const higlitedCard = document.querySelector(".highlight")
+        if (higlitedCard){
+          higlitedCard.classList.remove("highlight")
+        }
+
         infowindow.open(map, mark);
+        const card = document.querySelector(`.card-category[data-lat="${this.position.lat()}"]`)
+        card.scrollIntoView()
+        document.getElementById("scrollingTable").scrollTop -= 20;
+        card.classList.add("highlight")
+
       });
+
+
+
       // mark.addListener('mouseout', function() {
       //   infowindow.close(map, mark);
       // });
@@ -345,9 +365,6 @@ function initHeatMap() {
         });
       });
     };
-
-
-
 
     map.fitBounds(getBounds()); //auto-zoom
     map.panToBounds(getBounds()); //auto-center
