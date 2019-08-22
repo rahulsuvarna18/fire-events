@@ -26,12 +26,11 @@ flex-wrap: wrap;
 }
 
 #empty-dashboard {
-  margin-top: 400px;
-  margin-left: 200px;
   color: white;
   opacity: 0.8;
+  margin-top: 40vh;
+  margin-left: 10%;
 }
-
 .favourite-dashboard {
   margin: 20px 20px 20px 20px;
   width: 700px;
@@ -99,11 +98,6 @@ flex-wrap: wrap;
 
 #favourite-date {
   margin-bottom: 5px;
-}
-
-#map {
-  width: 100px;
-  height: 100px;
 }
 
 #dashboard-scroll {
