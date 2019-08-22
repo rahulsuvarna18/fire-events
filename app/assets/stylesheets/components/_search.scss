@@ -1,4 +1,6 @@
-
+.search-bar {
+top: 50px;
+}
 
 .ap-icon-pin {
   display: none;
@@ -14,20 +16,13 @@
   left: 395px;
   z-index: 1;
 
-
 }
 
 .home-search-form-control {
   position: relative;
   width: 70vh;
-  text-align:center;
-  color:white
 }
 
-.form-control{
-  text-align:center;
-  top: 109px;
-}
 
 .home-search-form-control {
   position: relative;
@@ -35,7 +30,7 @@
 
 .home-search-form-control .btn {
   position: absolute;
-  top: 115px;
+  top: 8px;
   bottom: 8px;
   right: 8px;
   background-size: 40px 40px;
