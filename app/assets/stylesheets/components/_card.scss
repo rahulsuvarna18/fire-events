@@ -31,4 +31,18 @@
 
 }
 
+.highlight {
+-webkit-box-shadow: 1px 3px 11px 14px rgba(238,102,49,0.88);
+-moz-box-shadow: 1px 3px 11px 14px rgba(238,102,49,0.88);
+box-shadow: 1px 3px 11px 14px rgba(238,102,49,0.88);
+}
+
+.flip-card {
+ a {
+  color: white !important;
+  &:hover {
+    text-decoration: none;
+  }
+ }
+}
 
