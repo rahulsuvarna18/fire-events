@@ -54,9 +54,7 @@ const getMarkersMap = (map, markers) => {
 
 
 
-      // mark.addListener('mouseout', function() {
-      //   infowindow.close(map, mark);
-      // });
+
       markers_array.push(mark)
     })
   }
@@ -316,8 +314,8 @@ function initHeatMap() {
 
     if (flipCard) {
       flipCard.forEach((card) => {
-        const latitude = card.querySelector('.card-category').attributes[2].value
-        const longitude = card.querySelector('.card-category').attributes[3].value
+        const latitude = card.querySelector('.card-category').dataset.lat
+        const longitude = card.querySelector('.card-category').dataset.lng
         var latlng = new google.maps.LatLng(latitude, longitude);
         const focusMark = new google.maps.Marker({
           position: latlng,
