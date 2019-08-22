@@ -1,5 +1,5 @@
 <% if @origin.include?("dashboard") %>
   document.getElementById("favourite_<%= @favourite.id %>").remove();
 <% else %>
-  document.getElementById("<%= @favourite.event.name.gsub(/\s+/, '') %>").innerHTML = '<i class="far fa-heart"></i>';
+  document.getElementById("<%= @favourite.event.name.gsub(/\s+/, '').gsub(/\W+/, '') %>").innerHTML = '<i class="far fa-heart" style="color: red"></i>';
 <% end %>

@@ -12,3 +12,10 @@
 .logo {
   top: 20px;
 }
+
+.btn-red-index {
+  color: red;
+  &:hover {
+    color: rgba(255, 0, 0, .5);
+  }
+}

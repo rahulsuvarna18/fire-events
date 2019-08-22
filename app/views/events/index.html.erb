@@ -43,15 +43,17 @@
                     <%= f.hidden_field :category, value: event.category %>
                     <%= f.hidden_field :description, value: event.description %>
                     <% event_name = event.name.gsub(/\s+/, '') %>
-                    <% if current_user.favourites.find_by(event_name: event.name) %>
-                      <%= link_to event_favourite_path(Event.find_by(name: event.name), current_user.favourites.find_by(event_name: event.name)), method: :delete, remote: true do %>
-                        <i class="fas fa-heart"></i>
+                    <div id="link">
+                      <% if current_user.favourites.find_by(event_name: event.name) %>
+                        <%= link_to event_favourite_path(Event.find_by(name: event.name), current_user.favourites.find_by(event_name: event.name)), method: :delete, id: Event.find_by(name: event.name).name.gsub(/\s+/, '').gsub(/\W+/, ''), class: 'btn-red-index', remote: true do %>
+                          <i class="fas fa-heart" style="font-size:20px; background: rgba(0,0,0,0);"></i>
+                        <% end %>
+                      <% else %>
+                        <button type="submit" id="<%= event.name.gsub(/\s+/, '').gsub(/\W+/, '') %>" style="background: rgba(0,0,0,0); border:none;">
+                          <i class="far fa-heart" style="color:red; font-size:20px; background: rgba(0,0,0,0);"></i>
+                        </button>
                       <% end %>
-                    <% else %>
-                      <button type="submit" id="<%= event_name %>">
-                        <i class="far fa-heart" style="color:red"></i>
-                      </button>
-                    <% end %>
+                    </div>
                   <% end %>
                 </ul>
               </div>
