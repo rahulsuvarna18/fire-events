@@ -11,3 +11,21 @@
 .dropdown-menu{
   width:200px;
 }
+
+
+.popup-link-map{
+  color: black;
+  font-weight: bolder;
+  &:hover{
+    text-decoration: none;
+    color:black;
+  }
+  p{
+    margin: 0px;
+    opacity: 0.6;
+    &:hover{
+      opacity: 1;
+    }
+
+  }
+}
