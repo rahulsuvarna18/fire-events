@@ -31,9 +31,11 @@ class EventsController < ApplicationController
     response = HTTParty.get(url)
     x = JSON.parse(response)
     @category_count = x["total_items"].to_i
-     x["events"]["event"].each do |event|
-      photo = event["image"]["url"] if event["image"].present?
-      @events << Event.new(name: event["title"], description: event["description"], latitude: event["latitude"], longitude: event["longitude"], start_date: event["start_time"], end_date: event["stop_time"], url: event["url"], photo: photo)
+    if x["events"] =! "null"
+      x["events"]["event"].each do |event|
+        photo = event["image"]["url"] if event["image"].present?
+        @events << Event.new(name: event["title"], description: event["description"], latitude: event["latitude"], longitude: event["longitude"], start_date: event["start_time"], end_date: event["stop_time"], url: event["url"], photo: photo)
+      end
     end
     @events
   end
