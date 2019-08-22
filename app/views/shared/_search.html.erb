@@ -1,10 +1,10 @@
-
+<div class="search-bar">
 <%= simple_form_for :index, url: events_path, method: :get do |f| %>
   <div class="home-search-form-control form-group">
     <input class="form-control string required" type="text" name="location"  id="search_query" placeholder="Discover a location" />
     <button name="button" type="submit" class="btn" id="home-search">
-
-      <div style="background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/facebook/92/fire_1f525.png'); width: 15px"></div>
+    <i class="fas fa-search-location"></i>
     </button>
   </div>
 <% end %>
+</div>
