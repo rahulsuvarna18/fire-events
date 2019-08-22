@@ -1,1 +1,2 @@
-document.getElementById("<%= @event.name %>").innerHTML = '<i class="fa fa-heart"></i>';
+console.log('destroy eveent');
+document.getElementById("<%= @event.name.gsub(/\W+/, '') %>").innerHTML = '<i class="fa fa-heart"></i>';

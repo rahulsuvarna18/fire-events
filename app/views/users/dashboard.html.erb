@@ -27,9 +27,9 @@
               <p id= "favourite-price" class="inside-cards-dashboard"><%=favourite.event.price %>€</p>
               <% end %>
         </div>
-        <div class="dasboard-heart-link">
+        <div class="dasboard-heart-link d-flex align-items-center" id="heart-dashboard">
           <%= link_to event_favourite_path(favourite.event, favourite), method: :delete, remote: true do %>
-            <i class="far fa-heart"></i>
+            <i class="far fa-heart" style="color: white"></i>
           <% end %>
           <a href="<%= favourite.event.url %>" target="_blank"><i class="fas fa-external-link-alt"></i></a>
         </div>
