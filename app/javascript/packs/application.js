@@ -10,7 +10,7 @@ import { typed } from "../plugins/typed";
 import { collapsible } from '../components/collapsible';
 
 initHeatMap();
-initCityAutoComplete();
+// initCityAutoComplete();
 // googleAuthenticate();
 // datepickr();
 collapsible();
