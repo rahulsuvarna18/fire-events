@@ -266,7 +266,7 @@ function initHeatMap() {
   if (mapElement) {
     const markers = JSON.parse(mapElement.dataset.markers);
     const map = new google.maps.Map(document.getElementById('map'), {
-      mapTypeId: ['styled_map'],
+      mapTypeId: 'styled_map',
       zoomControl: true,
       mapTypeControl: false,
       scaleControl: true,

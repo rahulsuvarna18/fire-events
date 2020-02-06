@@ -16,7 +16,7 @@
     <%= yield %>
 
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_MAP'] %>&libraries=visualization">
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&key=<%=ENV['GOOGLE_API_MAP']%>&libraries=visualization">
     </script>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>

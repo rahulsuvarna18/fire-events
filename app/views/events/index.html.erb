@@ -21,12 +21,13 @@
               <div class="flip-card-back">
                 <ul style="list-style-type:none; padding-top: 10px;">
                   <p><strong><%= event.name %></strong></p>
-                  <% if event.start_date != event.end_date %>
-                    <p>From <%= event.start_date.strftime("%A, %b %d") %> to <%= event.end_date.strftime("%A, %b %d") %></p>
-                  <% else %>
-                    <p> <%= event.start_date.strftime("%A, %b %d") %></p>
+                  <% if event.start_date != nil && event.end_date != nil %>
+                    <% if event.start_date != event.end_date %>
+                      <p>From <%= event.start_date.strftime("%A, %b %d") %> to <%= event.end_date.strftime("%A, %b %d") %></p>
+                    <% else %>
+                      <p> <%= event.start_date.strftime("%A, %b %d") %></p>
+                    <% end %>
                   <% end %>
-
                   <p><%= event.location %></p>
                   <%= simple_form_for @event, remote: true do |f| %>
                     <%= f.hidden_field :name, value: event.name %>
