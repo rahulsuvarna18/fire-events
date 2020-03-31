@@ -7,9 +7,9 @@ class EventsController < ApplicationController
   def parse_eventbrite(location, categories = nil, start_date = nil, end_date = nil)
     @events = []
     if start_date.present? && end_date.present?
-      url = "https://www.eventbriteapi.com/v3/events/search?location.address=#{location}&location.within=50km&categories=#{categories}&start_date.range_start=#{start_date+"T00:00:00"}&start_date.range_end=#{end_date+"T00:00:00"}&expand=venue&token=JVGRXXNSW3CLWBYKG7RQ"
+      url = "https://www.eventbriteapi.com/v3/events/search?location.address=#{location}&location.within=50km&categories=#{categories}&start_date.range_start=#{start_date+"T00:00:00"}&start_date.range_end=#{end_date+"T00:00:00"}&expand=venue&token={ENV["EVENTBRITE_API"]}"
     else
-      url = "https://www.eventbriteapi.com/v3/events/search?location.address=#{location}&location.within=50km&categories=#{categories}&expand=venue&token=JVGRXXNSW3CLWBYKG7RQ"
+      url = "https://www.eventbriteapi.com/v3/events/search?location.address=#{location}&location.within=50km&categories=#{categories}&expand=venue&token={ENV["EVENTBRITE_API"]}"
     end
     html_file = open(url).read
     html_doc = JSON.parse(html_file)
@@ -27,7 +27,7 @@ class EventsController < ApplicationController
     if start_date.present? && end_date.present?
       url = "http://api.eventful.com/json/events/search?q=#{find_eventbrite_category_name(categories)}&location=#{location}&date=#{start_date+"00-"+end_date+"00"}&app_key=f672q2vdWWFJVGmq"
     elsif categories.present?
-      url = "http://api.eventful.com/json/events/search?q=#{find_eventbrite_category_name(categories)}&location=#{location}&date=Future&app_key=f672q2vdWWFJVGmq"
+      url = "http://api.eventful.com/json/events/search?q=#{find_eventbrite_category_name(categories)}&location=#{location}&date=Future&app_key={ENV["EVENTFUL_API"]}"
     else
       url = "http://api.eventful.com/json/events/search?q=&location=#{location}&date=Future&app_key=f672q2vdWWFJVGmq"
     end
